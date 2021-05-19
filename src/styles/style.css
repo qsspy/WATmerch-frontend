@@ -1,0 +1,170 @@
+a {
+    text-decoration: inherit;
+    color: inherit;
+}
+
+a:hover {
+    color: inherit;
+}
+
+a:visited {
+    color: inherit;
+}
+
+h3 {
+    color: #393D46;
+}
+
+.wat-name {
+    font-weight: bold;
+}
+
+#header-img {
+    width: 100%;
+    height: auto;
+}
+
+#home-products > div button {
+    width: 80%;
+}
+
+#quality-section > div div:not(:last-child){
+    margin-bottom: 20px;
+}
+
+.home-product-img {
+    width: 250px;
+    height: auto;
+}
+
+#nav-button {
+    height: 50px;
+    width: 50px;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact-icon {
+    width: 20px;
+    height: 20px;
+    clip-path: circle(50% at 50% 50%);
+    padding: 15px;
+    margin: 10px;
+
+    transition: padding;
+    transition-timing-function: ease-out;
+    transition-duration: 500ms;
+
+}
+
+#menu {
+    overflow: hidden;
+    max-height: 0px;
+    opacity: 0.0;
+}
+
+.contact-icon:hover {
+    padding: 20px;
+}
+
+.flex-fill {
+    flex: 1;
+}
+
+ul a {
+    padding: 10px;
+
+    transition: padding 0.5s, background-color 0.5s, color 0.5s;
+}
+
+ul a:hover {
+    background-color: #F1F2F0;
+    color: #393D46;
+    padding-left: 20px;
+}
+
+#category-div a:hover {
+    padding-left: 10px;
+}
+
+#category-div {
+    margin: 0px;
+    padding:0px;
+}
+
+form div div{
+    padding: 10px 20px;
+}
+
+form div small {
+    visibility: hidden;
+}
+
+/* md */
+@media (min-width: 768px) {
+
+    #nav-button {
+        height: 100px;
+        width: 100px;
+    }
+
+    #header-img {
+        min-width: 200px;
+        max-width: 500px;
+        height: auto;
+    }
+
+    #home-products > div {
+        width: calc(100% * (1/2) - 20px);
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    #quality-section div div:not(:last-child){
+        margin-right: 10px;
+        margin-bottom: 0px;
+    }
+
+    #quality-section div {
+        position: relative;
+        top: 30px;
+    }
+
+    #quality-section h1 {
+        position: relative;
+        top: 30px
+    }
+
+    form div {
+        flex:1
+    }
+}
+
+/* xl */
+@media (min-width: 1200px) {
+
+    #quality-section div div:not(:last-child){
+        margin-right: 30px;
+    }
+
+    #nav-button {
+        height: 130px;
+        width: 130px;
+    }
+
+    .sidebar {
+        min-width: 130px;
+    }
+
+    #main-nav {
+        margin-right: 130px;
+    }
+
+    form div {
+        margin: 20px 20px;
+    }
+ }

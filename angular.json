@@ -31,7 +31,13 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles/reset.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/font-awesome/css/font-awesome.min.css",
+              "src/styles/colors.css",
+              "src/styles/scrollbar.css",
+              "src/styles/topography.css",
+              "src/styles/style.css"
             ],
             "scripts": []
           },
