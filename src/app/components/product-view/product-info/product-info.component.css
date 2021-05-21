@@ -1,0 +1,24 @@
+div h4 {
+    margin-right:20px;
+    margin-bottom: 0px;
+}
+
+h4 {
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+
+    transition: border 0.5s, color 0.5s;
+}
+
+h4:hover {
+    color: orange;
+}
+
+.text-area {
+    min-height: 200px;
+}
+
+.section-selected {
+    color: orange;
+    border-color: orange;
+}

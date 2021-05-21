@@ -18,6 +18,10 @@ import { ShopProductsComponent } from './components/shop/shop-products/shop-prod
 import { ContactComponent } from './components/contact/contact/contact.component';
 import { FormsModule } from '@angular/forms';
 import { ProductViewComponent } from './components/product-view/product-view/product-view.component';
+import { ColorPickerComponent } from './components/product-view/color-picker/color-picker.component';
+import { SizePickerComponent } from './components/product-view/size-picker/size-picker.component';
+import { QuantityPickerComponent } from './components/product-view/quantity-picker/quantity-picker.component';
+import { ProductInfoComponent } from './components/product-view/product-info/product-info.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +38,11 @@ import { ProductViewComponent } from './components/product-view/product-view/pro
     CategoryBarComponent,
     ShopProductsComponent,
     ContactComponent,
-    ProductViewComponent
+    ProductViewComponent,
+    ColorPickerComponent,
+    SizePickerComponent,
+    QuantityPickerComponent,
+    ProductInfoComponent
   ],
   imports: [
     BrowserModule,

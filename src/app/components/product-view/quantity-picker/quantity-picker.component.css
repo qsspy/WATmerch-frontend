@@ -1,0 +1,10 @@
+.count-container {
+    font-family: monospace, sans-serif;
+    font-size: 1.4rem;
+    width: 50px;
+}
+
+button {
+    font-size: 1.4rem;
+    width: 50px;
+}

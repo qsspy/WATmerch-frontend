@@ -1,0 +1,11 @@
+<div class="d-flex align-items-center">
+    <h3 class="mb-0">ROZMIAR</h3>
+    <div class="d-flex size-wrapper mx-4">
+        <div *ngFor="let size of sizes"
+             (click)="selectSize(size,$event)"
+             class="flex-center p-1 single-size-wrapper">
+            <span>{{size}}</span>
+        </div>
+    </div>
+    <h3 class="mb-0" #selectedSizeLabel>Dowolny</h3>
+</div>

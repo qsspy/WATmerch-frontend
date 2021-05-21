@@ -1,1 +1,30 @@
-<p>product-view works!</p>
+<div class="bg-white p-2">
+    <div class="d-flex flex-column flex-md-row align-items-md-center">
+        <div class="flex-center img-container">
+            <img src="assets/images/cup.jpg" class="p-3">
+        </div>
+        <div class="mx-md-3">
+            <h1 class="my-3">Kubek</h1>
+            <div class="d-flex">
+                <h1 class="pe-3 text-secondary" style="text-decoration: line-through;">250.00zł</h1>
+                <h1>150.00zł</h1>
+            </div>
+            <div class="my-2">
+                <app-color-picker></app-color-picker>
+                <hr>
+            </div>
+            <div class="my-2">
+                <app-size-picker></app-size-picker>
+                <hr>
+            </div>
+            <div class="d-flex my-3">
+                <app-quantity-picker max-value="99"></app-quantity-picker>
+                <button class="btn btn-secondary ms-5">
+                    <i class="fa fa-shopping-cart px-2"></i>
+                    Do koszyka
+                </button>
+            </div>
+        </div>
+    </div>
+    <app-product-info></app-product-info>
+</div>

@@ -1,0 +1,24 @@
+.colors-wrapper div div{
+    width: 30px;
+    height: 30px;
+    margin: 0px 10px;
+    clip-path: circle();
+
+    cursor: pointer;
+
+    transition: transform 0.2s ease-out;
+}
+
+.colors-wrapper div div:hover {
+    transform: scale(1.2);
+}
+
+.selected-color {
+    border-bottom: 2px solid #393D46!important;
+    background-color: white;
+}
+
+.single-color-wrapper {
+    border-bottom: 2px solid transparent;
+    transition: border 0.5s;
+}

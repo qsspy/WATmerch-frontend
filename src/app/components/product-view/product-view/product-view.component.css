@@ -1,0 +1,20 @@
+img {
+    width: 50%;
+}
+
+.img-container {
+    border: 2px solid #393D46;
+}
+
+/* md */
+@media (min-width: 768px) {
+
+    img {
+        width: 100%;
+    }
+
+    .img-container {
+        width: 300px;
+        height: 300px;
+    }
+}

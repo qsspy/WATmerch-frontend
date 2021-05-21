@@ -1,0 +1,12 @@
+<div class="d-flex">
+    <h4 [ngClass]="{'section-selected' : descriptionSelected}" (click)="selectSection(1)">Opis</h4>
+    <h4 [ngClass]="{'section-selected' : shippingSelected}" (click)="selectSection(2)">Dostawa</h4>
+    <h4 [ngClass]="{'section-selected' : reviewsSelected}" (click)="selectSection(3)">Opinie</h4>
+</div>
+<hr>
+<div class="text-area">
+    <p *ngIf="descriptionSelected">{{description}}</p>
+    <p *ngIf="shippingSelected">{{shipping}}</p>
+    <p *ngIf="reviewsSelected">{{reviews}}</p>
+</div>
+<hr>

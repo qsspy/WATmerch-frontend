@@ -1,0 +1,22 @@
+span {
+    font-family: monospace, sans-serif;
+    font-weight: bold;
+    margin: 0 10px;
+    font-size: 1.2rem;
+    transition: transform 0.2s ease-out;
+}
+
+.single-size-wrapper{
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: border 0.5s;
+}
+
+.single-size-wrapper:hover span {
+    transform: scale(1.2);
+}
+
+.selected-size {
+    border-bottom: 2px solid #393D46!important;
+    background-color: white;
+}

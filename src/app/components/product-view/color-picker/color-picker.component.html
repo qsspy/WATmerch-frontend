@@ -1,0 +1,9 @@
+<div class="d-flex align-items-center">
+    <h3 class="mb-0">KOLOR</h3>
+    <div class="d-flex colors-wrapper mx-4">
+        <div *ngFor="let color of colors | keyvalue" class="flex-center p-1 single-color-wrapper">
+            <div [ngStyle]="{'background-color' : color.value}" (click)="selectColor(color.key,$event)"></div>
+        </div>
+    </div>
+    <h3 #selectedColorLabel class="mb-0">Dowolny</h3>
+</div>

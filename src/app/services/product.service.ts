@@ -55,6 +55,10 @@ export class ProductService {
       this.getProducts({extended: true, page:page, size:size,
                         category:this.activeCategoryId, contains: this.keyword})
    }
+
+   getProduct(id : number) {
+      
+   }
 }
 
 export interface GetProductsParams {
