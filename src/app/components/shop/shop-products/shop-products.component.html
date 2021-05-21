@@ -1,0 +1,31 @@
+<section id="home-products" class="d-flex flex-wrap justify-content-center">
+    <div *ngFor="let product of products, let i = index"
+         class="bg-white d-flex align-items-center my-4 d-flex flex-column">
+        <div class="flex-center">
+            <img [src]="productsImageUrls[i]" class="home-product-img p-3">
+        </div>
+        <h4 class="py-2">{{product.name}}</h4>
+        <div class="d-flex">
+            <p [ngStyle]="{'text-decoration': (product.basicDetails?.discountPercent) ? 'line-through' : 'initial'}"
+               class="px-1" >{{product.price | number : '1.2-2'}}zł</p>
+            <p  *ngIf="product.basicDetails?.discountPercent"
+                class="px-1">{{product.price-(product.price*product.basicDetails!.discountPercent!) | number : '1.2-2'}}zł</p>
+        </div>
+        <p class="px-4">
+            {{product.basicDetails!.shortDescription}}
+        </p>
+        <button class="btn btn-secondary my-4">
+            <i class="fa fa-shopping-cart px-2"></i>
+            KUP TERAZ
+        </button>
+    </div>
+    <div id="no-products-alert" *ngIf="!products.length" class="flex-center alert alert-warning my-5">
+        <p class="mb-0">Nie znalezniono żadnych produktów :/</p>
+    </div>
+</section>
+
+<div *ngIf="products.length"
+     class="d-flex justify-content-center">
+    <button (click)="loadNextPageOnClick()"
+            class="btn btn-outline-secondary w-50">ZAŁADUJ WIĘCEJ</button>
+</div>

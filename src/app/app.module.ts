@@ -1,22 +1,46 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { LeftSidebarComponent } from './components/left-sidebar/left-sidebar.component';
+import { HeaderComponent } from './components/home/header/header.component';
+import { HomeComponent } from './components/home/home/home.component';
+import { HomeProductsComponent } from './components/home/home-products/home-products.component';
+import { QualityComponent } from './components/home/quality/quality.component';
+import { NewsletterComponent } from './components/home/newsletter/newsletter.component';
+import { ShopComponent } from './components/shop/shop/shop.component';
+import { CategoryBarComponent } from './components/shop/category-bar/category-bar.component';
+import { ShopProductsComponent } from './components/shop/shop-products/shop-products.component';
+import { ContactComponent } from './components/contact/contact/contact.component';
+import { FormsModule } from '@angular/forms';
+import { ProductViewComponent } from './components/product-view/product-view/product-view.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
     FooterComponent,
-    LeftSidebarComponent
+    LeftSidebarComponent,
+    HeaderComponent,
+    HomeComponent,
+    HomeProductsComponent,
+    QualityComponent,
+    NewsletterComponent,
+    ShopComponent,
+    CategoryBarComponent,
+    ShopProductsComponent,
+    ContactComponent,
+    ProductViewComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap:[AppComponent]

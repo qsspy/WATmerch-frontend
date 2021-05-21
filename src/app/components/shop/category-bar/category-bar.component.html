@@ -1,0 +1,7 @@
+<ul id="category-div" class="d-flex bg-grey color-white justify-content-end">
+    <a  *ngFor="let category of categories"
+        [ngClass]="{'category-selected' : category.active}"
+        (click)="activateCategory(category.id)"
+        class="flex-fill text-center">{{category.name!}}
+    </a>
+</ul>

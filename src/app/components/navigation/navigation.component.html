@@ -9,16 +9,19 @@
                 <i #navIcon class="fa fa-bars fa-lg"></i>
             </button>
             <ul #navMenu id="menu" class="bg-grey color-white m-0 d-flex flex-column" style="z-index: 2; position: absolute; width: 100%;">
-                <a href="index.html">Strona Główna</a>
-                <a href="shop.html">Sklep</a>
-                <a href="account.html">Konto użytkownika</a>
-                <a href="cart.html">Koszyk</a>
-                <a href="contact.html">Kontakt</a>
+                <a routerLink="/home" (click)="hideMenu()">Strona Główna</a>
+                <a routerLink='/shop' (click)="hideMenu()">Sklep</a>
+                <a href="account.html" (click)="hideMenu()">Konto użytkownika</a>
+                <a href="cart.html" (click)="hideMenu()">Koszyk</a>
+                <a routerLink='/contact' (click)="hideMenu()">Kontakt</a>
             </ul>
             <div class="order-md-2">
                 <div class="d-flex align-items-center">
-                    <a class="fa fa-search fa-lg px-3"></a>
-                    <input type="text" class="form-control">
+                    <button class="btn btn-secondary mx-2" (click)="searchProduct()">
+                        <i class="fa fa-search fa-lg px-3"></i>
+                    </button>
+                    <input #searchText type="text" class="form-control"
+                           (keydown.enter)="searchProduct()">
                 </div>
             </div>
             <h3 class="wat-name order-md-1 me-md-5 pe-2">WATmerch.</h3>

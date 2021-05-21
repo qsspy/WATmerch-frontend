@@ -1,0 +1,46 @@
+<h1 class="my-5">Skontaktuj się z nami!</h1>
+<form class="bg-white d-flex flex-column flex-md-row">
+    <div>
+        <div class="form-group">
+            <p>Imię i Nazwisko</p>
+            <input  [(ngModel)]="form.name" name="name"
+                    type="text" class="form-control" placeholder="Imię i Nazwisko">
+            <small  [ngClass]="form.name || !buttonClicked ? 'hidden' : 'visible'"
+                    class="text-danger">Pole nie może być puste!</small>
+        </div>
+        <div class="form-group">
+            <p>Adres email</p>
+            <input  [(ngModel)]="form.email" name="email"
+                    type="text" class="form-control" placeholder="Adres email">
+            <small  [ngClass]="form.email || !buttonClicked ? 'hidden' : 'visible'"
+                    class="text-danger">Pole nie może być puste</small>
+        </div>
+        <div class="form-group">
+            <p>Numer telefonu</p>
+            <input  [(ngModel)]="form.phoneNumber" name="phoneNumber"
+                    type="text" class="form-control" placeholder="Numer telefonu">
+            <small  [ngClass]="form.phoneNumber || !buttonClicked ? 'hidden' : 'visible'"
+                    class="text-danger">Pole nie może być puste</small>
+        </div>
+        <div class="form-group">
+            <p>Temat</p>
+            <input  [(ngModel)]="form.subject" name="subject"
+                    type="text" class="form-control" placeholder="Temat">
+            <small  [ngClass]="form.subject || !buttonClicked ? 'hidden' : 'visible'"
+                    class="text-danger">Pole nie może być puste!</small>
+        </div>
+    </div>
+    <div>
+        <div class="form-group">
+            <p>Wiadomość</p>
+            <textarea   [(ngModel)]="form.message" name="message"
+                        type="text" class="form-control" placeholder="Wiadomość" rows="5"></textarea>
+            <small  [ngClass]="form.message || !buttonClicked ? 'hidden' : 'visible'"
+                    class="text-danger">Pole nie może być puste!</small>
+        </div>
+        <div>
+            <button #submitButton (click)="onSubmit()"
+                    id="contact-form-button" type="submit" class="btn btn-secondary w-100">WYŚLIJ</button>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,19 @@
+<section id="home-products" class="d-flex flex-column flex-md-row flex-wrap">
+    <div *ngFor="let product of randomProducts, let i = index"
+         class="bg-white d-flex flex-column align-items-center my-4">
+        <div class="flex-center">
+            <img [src]="randomProductsImageURLs[i]" alt="" class="home-product-img p-4">
+        </div>
+        <h4 class="py-2">{{product.name}}</h4>
+        <div class="d-flex">
+            <p [ngStyle]="{'text-decoration': (product.basicDetails?.discountPercent) ? 'line-through' : 'initial'}"
+               class="px-1" >{{product.price | number : '1.2-2'}}zł</p>
+            <p  *ngIf="product.basicDetails?.discountPercent"
+                class="px-1">{{product.price-(product.price*product.basicDetails!.discountPercent!) | number : '1.2-2'}}zł</p>
+        </div>
+        <button class="btn btn-secondary my-4">
+            <i class="fa fa-shopping-cart px-2"></i>
+            KUP TERAZ
+        </button>
+    </div>
+</section>

@@ -28,13 +28,18 @@ h3 {
     width: 80%;
 }
 
+#home-products > div {
+    width: 100%;
+}
+
+
 #quality-section > div div:not(:last-child){
     margin-bottom: 20px;
 }
 
 .home-product-img {
-    width: 250px;
-    height: auto;
+    max-width: 250px;
+    max-height: 250px;
 }
 
 #nav-button {
@@ -79,12 +84,22 @@ ul a {
     padding: 10px;
 
     transition: padding 0.5s, background-color 0.5s, color 0.5s;
+    cursor: pointer;
+}
+
+a:hover {
+    cursor: pointer!important;
 }
 
 ul a:hover {
     background-color: #F1F2F0;
     color: #393D46;
     padding-left: 20px;
+}
+
+.category-selected {
+    background-color: #F1F2F0;
+    color: #393D46;
 }
 
 #category-div a:hover {
@@ -101,6 +116,14 @@ form div div{
 }
 
 form div small {
+    visibility: hidden;
+}
+
+.visible {
+    visibility: visible;
+}
+
+.hidden {
     visibility: hidden;
 }
 
