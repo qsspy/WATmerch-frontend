@@ -20,8 +20,9 @@
                 <hr>
             </div>
             <div class="d-flex my-3">
-                <app-quantity-picker max-value="99"></app-quantity-picker>
-                <button class="btn btn-secondary ms-5">
+                <app-quantity-picker #quantityPicker max-value="99"></app-quantity-picker>
+                <button (click)="addProductToCart()"
+                        class="btn btn-secondary ms-5">
                     <i class="fa fa-shopping-cart px-2"></i>
                     Do koszyka
                 </button>

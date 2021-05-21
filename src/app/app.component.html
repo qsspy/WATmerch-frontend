@@ -1,9 +1,23 @@
-<app-navigation></app-navigation>
-<div class="d-flex">
-  <app-left-sidebar></app-left-sidebar>
-  <div class="m-4 m-xl-0 flex-fill">
-    <router-outlet></router-outlet>
-  </div>
-  <div class="d-none sidebar d-xl-block"></div>
-</div>
-<app-footer></app-footer>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav position="end" fixedInViewport=true>
+    <!-- Sidenav content -->
+
+    <button (click)="sidenav.toggle()" id='back-button'
+            class="btn btn-info">Zamknij</button>
+    <app-sidebar></app-sidebar>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <!-- Site content -->
+
+    <app-navigation (sidenavToggle)="toggleSidenav()"></app-navigation>
+    <div class="d-flex">
+      <app-left-sidebar></app-left-sidebar>
+      <div class="m-4 m-xl-0 flex-fill">
+        <router-outlet></router-outlet>
+      </div>
+      <div class="d-none sidebar d-xl-block"></div>
+    </div>
+
+    <app-footer></app-footer>
+  </mat-sidenav-content>
+</mat-sidenav-container>

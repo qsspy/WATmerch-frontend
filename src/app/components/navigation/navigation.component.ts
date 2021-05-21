@@ -1,4 +1,4 @@
-import { HostListener } from '@angular/core';
+import { EventEmitter, HostListener, Output } from '@angular/core';
 import { Component, OnInit, AfterViewInit, ElementRef, ViewChild, AfterContentInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProductService } from 'src/app/services/product.service';
@@ -13,8 +13,9 @@ export class NavigationComponent implements OnInit, AfterViewInit {
   @ViewChild('navButton', { static: true }) navButton!: ElementRef
   @ViewChild('navIcon', { static: true }) navIcon!: ElementRef
   @ViewChild('navMenu', { static: true }) navMenu!: ElementRef
-
   @ViewChild('searchText', {static: true}) searchInput!: ElementRef
+
+  @Output() sidenavToggle = new EventEmitter()
 
   private _isExpanded: boolean = false
   private _barsAwesome: String = 'fa-bars'
@@ -70,5 +71,13 @@ export class NavigationComponent implements OnInit, AfterViewInit {
     } else {
       this.router.navigate(['/shop'])
     }
+  }
+
+  toggleOuterSidenav() {
+    this.sidenavToggle.emit()
+  }
+
+  backToHome() {
+    this.router.navigate(['/home'])
   }
 }

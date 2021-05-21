@@ -22,6 +22,9 @@ import { ColorPickerComponent } from './components/product-view/color-picker/col
 import { SizePickerComponent } from './components/product-view/size-picker/size-picker.component';
 import { QuantityPickerComponent } from './components/product-view/quantity-picker/quantity-picker.component';
 import { ProductInfoComponent } from './components/product-view/product-info/product-info.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSidenavModule} from '@angular/material/sidenav';
+import { SidebarComponent } from './components/sidebar/sidebar.component'
 
 @NgModule({
   declarations: [
@@ -42,14 +45,18 @@ import { ProductInfoComponent } from './components/product-view/product-info/pro
     ColorPickerComponent,
     SizePickerComponent,
     QuantityPickerComponent,
-    ProductInfoComponent
+    ProductInfoComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MatSidenavModule
   ],
+  exports: [MatSidenavModule],
   providers: [],
   bootstrap:[AppComponent]
 })

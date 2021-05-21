@@ -17,6 +17,7 @@ h3 {
 
 .wat-name {
     font-weight: bold;
+    cursor: pointer;
 }
 
 #header-img {

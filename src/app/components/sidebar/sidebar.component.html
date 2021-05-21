@@ -1,0 +1,11 @@
+<h3 *ngFor="let product of orderProducts">{{product.quantity + 'x' + product.name}}</h3>
+<hr>
+<div *ngIf="orderProducts.length != 0" 
+    class="d-flex justify-content-around">
+    <button class="btn btn-info">Koszyk</button>
+    <button class="btn btn-info">Zamawiam!</button>
+</div>
+<p  *ngIf="orderProducts.length == 0"
+    class="px-3 text-center">
+    W koszyku nie masz jeszcze żadnych produktów.
+</p>

@@ -1,0 +1,10 @@
+mat-sidenav {
+    background-color: #F6F7FB;
+    width: 300px;
+    height: 100vh;
+}
+
+#back-button {
+    width: 100%;
+    text-align: center;
+}
