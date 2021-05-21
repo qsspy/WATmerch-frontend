@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 import { ProductModel } from 'src/app/models/product/product-model';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -16,7 +17,8 @@ export class HomeProductsComponent implements OnInit {
   randomProductsImageURLs : any[] = []
 
   constructor(private productService : ProductService,
-              private sanitizer: DomSanitizer) { }
+              private sanitizer: DomSanitizer,
+              private router : Router) { }
 
   ngOnInit(): void {
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-product-info',
@@ -7,11 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductInfoComponent implements OnInit {
 
+  @Input('description') description! : string | undefined
+
   descriptionSelected = true
   shippingSelected = false
   reviewsSelected = false
 
-  description = "Tu w przyszłości znajdzie się szczegółowy opis produktu"
   shipping = "Tu w przyszłości znajdą się informacje o dostawie"
   reviews = "Tu w przyszłości znajdzie się sekcja opinii użytkowników produktu"
 

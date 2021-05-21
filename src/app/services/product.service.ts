@@ -31,8 +31,6 @@ export class ProductService {
 
    getProducts(params?: GetProductsParams) {
 
-      console.log('Im getting data')
-
       let url = this.baseUrl + '/api/products?'
 
       if (params) {
@@ -57,7 +55,10 @@ export class ProductService {
    }
 
    getProduct(id : number) {
-      
+
+      let url = this.baseUrl + '/api/products/' + id
+
+      return this.http.get<ProductModel>(url)
    }
 }
 

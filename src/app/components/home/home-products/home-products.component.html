@@ -11,7 +11,8 @@
             <p  *ngIf="product.basicDetails?.discountPercent"
                 class="px-1">{{product.price-(product.price*product.basicDetails!.discountPercent!) | number : '1.2-2'}}zł</p>
         </div>
-        <button class="btn btn-secondary my-4">
+        <button [routerLink]="['/product',product.barcode]"
+                class="btn btn-secondary my-4">
             <i class="fa fa-shopping-cart px-2"></i>
             KUP TERAZ
         </button>
