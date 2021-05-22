@@ -1,0 +1,7 @@
+.main-container {
+    min-height: 50vh;
+    max-width: 500px;
+    border:hotpink 10px;
+    background-color: rgb(252, 221, 244);
+    border-style: dashed;
+}

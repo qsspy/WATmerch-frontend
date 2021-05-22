@@ -1,0 +1,124 @@
+<div class="bg-white">
+    <form class="p-3" [formGroup]="orderFormGroup">
+        <!-- billing + shipping + info -->
+        <div class="d-flex flex-column flex-md-row">
+            <!-- billing + shipping  -->
+            <div class="flex-fill p-3" formGroupName='shippingAddress'>
+                <h3>Adres dostawy</h3>
+                <div class="form-check" style="visibility: hidden;">
+                    <input class="form-check-input" type="checkbox">
+                    <label class="form-check-label">
+                      Default checkbox
+                    </label>
+                </div>
+                <div>
+                    <!-- firstname + lastName -->
+                    <div class="d-flex">
+                        <div class="form-group pe-3">
+                            <label>Imię</label>
+                            <input type="text" class="form-control" placeholder="Imię" formControlName="firstName">
+                            <small  [ngClass]="shippingFirstName!.invalid && (shippingFirstName!.dirty || shippingFirstName!.touched) ? 'visible' : 'hidden'"
+                                    class="form-text">Pole jest wymagane.</small>
+                        </div>
+                        <div class="form-group ps-3">
+                            <label>Nazwisko</label>
+                            <input type="text" class="form-control" placeholder="Nazwisko" formControlName="lastName">
+                            <small  [ngClass]="shippingLastName!.invalid && (shippingLastName!.dirty || shippingLastName!.touched) ? 'visible' : 'hidden'"
+                                    class="form-text">Pole jest wymagane.</small>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Ulica</label>
+                        <input type="text" class="form-control" placeholder="Ulica" formControlName="street">
+                        <small  [ngClass]="shippingStreet!.invalid && (shippingStreet!.dirty || shippingStreet!.touched) ? 'visible' : 'hidden'"
+                                class="form-text">Pole jest wymagane.</small>
+                    </div>
+                    <div class="form-group">
+                        <label>Miasto</label>
+                        <input type="text" class="form-control" placeholder="Miasto" formControlName="city">
+                        <small  [ngClass]="shippingCity!.invalid && (shippingCity!.dirty || shippingCity!.touched) ? 'visible' : 'hidden'"
+                                class="form-text">Pole jest wymagane.</small>
+                    </div>
+                    <div class="form-group">
+                        <label>Kod pocztowy</label>
+                        <input type="text" class="form-control" placeholder="Kod pocztowy" formControlName="postalCode">
+                        <small  [ngClass]="shippingPostalCode!.invalid && (shippingPostalCode!.dirty || shippingPostalCode!.touched) ? 'visible' : 'hidden'"
+                                class="form-text">Pole jest wymagane.</small>
+                    </div>
+                    <div class="form-group">
+                        <label>Kraj</label>
+                        <input type="text" class="form-control" placeholder="Kraj" formControlName="country">
+                        <small  [ngClass]="shippingCountry!.invalid && (shippingCountry!.dirty || shippingCountry!.touched) ? 'visible' : 'hidden'"
+                                class="form-text">Pole jest wymagane.</small>
+                    </div>
+                    <div class="form-group">
+                        <label>Numer telefonu</label>
+                        <input type="tel" class="form-control" placeholder="Numer telefonu" formControlName="phoneNumber">
+                        <small  [ngClass]="shippingPhoneNumber!.invalid && (shippingPhoneNumber!.dirty || shippingPhoneNumber!.touched) ? 'visible' : 'hidden'"
+                                class="form-text">Numer jest nieprawidłowy.</small>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-fill p-3" formGroupName='billingAddress'>
+                <h3>Adres rozliczeniowy</h3>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" (change)="copyShippingToBilling($event)">
+                    <label class="form-check-label">
+                      Kopiuj adres dostawy
+                    </label>
+                </div>
+                <div>
+                    <!-- firstname + lastName -->
+                    <div class="d-flex">
+                        <div class="form-group pe-3">
+                            <label>Imię</label>
+                            <input type="text" class="form-control" placeholder="Imię" formControlName="firstName">
+                            <small  [ngClass]="billingFirstName!.invalid && (billingFirstName!.dirty || billingFirstName!.touched) ? 'visible' : 'hidden'"
+                                    class="form-text">Pole jest wymagane.</small>
+                        </div>
+                        <div class="form-group ps-3">
+                            <label>Nazwisko</label>
+                            <input type="text" class="form-control" placeholder="Nazwisko" formControlName="lastName">
+                            <small  [ngClass]="billingLastName!.invalid && (billingLastName!.dirty || billingLastName!.touched) ? 'visible' : 'hidden'"
+                                    class="form-text">Pole jest wymagane.</small>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Ulica</label>
+                        <input type="text" class="form-control" placeholder="Ulica" formControlName="street">
+                        <small  [ngClass]="billingStreet!.invalid && (billingStreet!.dirty || billingStreet!.touched) ? 'visible' : 'hidden'"
+                                class="form-text">Pole jest wymagane.</small>
+                    </div>
+                    <div class="form-group">
+                        <label>Miasto</label>
+                        <input type="text" class="form-control" placeholder="Miasto" formControlName="city">
+                        <small  [ngClass]="billingCity!.invalid && (billingCity!.dirty || billingCity!.touched) ? 'visible' : 'hidden'"
+                                class="form-text">Pole jest wymagane.</small>
+                    </div>
+                    <div class="form-group">
+                        <label>Kod pocztowy</label>
+                        <input type="text" class="form-control" placeholder="Kod pocztowy" formControlName="postalCode">
+                        <small  [ngClass]="billingPostalCode!.invalid && (billingPostalCode!.dirty || billingPostalCode!.touched) ? 'visible' : 'hidden'"
+                                class="form-text">Pole jest wymagane.</small>
+                    </div>
+                    <div class="form-group">
+                        <label>Kraj</label>
+                        <input type="text" class="form-control" placeholder="Kraj" formControlName="country">
+                        <small  [ngClass]="billingCountry!.invalid && (billingCountry!.dirty || billingCountry!.touched) ? 'visible' : 'hidden'"
+                                class="form-text">Pole jest wymagane.</small>
+                    </div>
+                    <div class="form-group">
+                        <label>Numer telefonu</label>
+                        <input type="tel" class="form-control" placeholder="Numer telefonu" formControlName="phoneNumber">
+                        <small  [ngClass]="billingPhoneNumber!.invalid && (billingPhoneNumber!.dirty || billingPhoneNumber!.touched) ? 'visible' : 'hidden'"
+                                class="form-text">Numer jest nieprawidłowy.</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group p-3">
+            <label>Wiadomość</label>
+            <textarea class="form-control" rows="5" name="message" placeholder="Wiadomość dla sklepu."></textarea>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,23 @@
+<h3 class="mb-3">Podsumowanie</h3>
+<table class="table table-bordered">
+    <thead>
+        <th>Produkt</th>
+        <th>Suma</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let product of orderProducts, let i = index">
+            <td>
+                <span>{{product.name}}</span>
+                <i class="fa fa-times mx-2" aria-hidden="true"></i>
+                <span>{{product.quantity}}</span>
+            </td>
+            <td>
+                {{subtotals[i] | number : '1.2-2'}}zł
+            </td>
+        </tr>
+        <tr class="summary-tr">
+            <td>Suma końcowa :</td>
+            <td>{{total | number : '1.2-2'}}zł</td>
+        </tr>
+    </tbody>
+</table>

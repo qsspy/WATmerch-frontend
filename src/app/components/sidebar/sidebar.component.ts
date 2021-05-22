@@ -44,6 +44,11 @@ export class SidebarComponent implements OnInit {
     this.sidenavToggle.emit()
   }
 
+  showOrder() {
+    this.router.navigate(['/order'])
+    this.sidenavToggle.emit()
+  }
+
   toggleSidenav() {
     this.sidenavToggle.emit()
   }

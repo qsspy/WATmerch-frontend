@@ -1,1 +1,8 @@
-<p>order works!</p>
+<app-order-form #form></app-order-form>
+<div *ngIf="productsExists">
+    <app-order-totals></app-order-totals>
+    <button class="btn btn-primary" (click)="placeOrder($event)">Zamawiam!</button>
+</div>
+<div *ngIf="!productsExists" class="flex-center alert alert-warning m-5">
+    <p class="mb-0">Twoje zamównienie nie zawiera żadnego produktu :/</p>
+</div>

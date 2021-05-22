@@ -64,4 +64,9 @@ export class CartService {
     this.orderProducts.next(orderProducts)
     window.localStorage.setItem(this._cartStorageKey, JSON.stringify(orderProducts))
   }
+
+  emptyCart() {
+    this.orderProducts.next([])
+    window.localStorage.setItem(this._cartStorageKey, JSON.stringify([]))
+  }
 }

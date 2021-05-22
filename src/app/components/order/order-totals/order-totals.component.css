@@ -1,0 +1,14 @@
+table {
+    font-family: monospace, sans-serif;
+}
+
+th {
+    padding: 0px 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.summary-tr {
+    font-size: 1.4rem;
+    font-weight: bold;
+}

@@ -25,7 +25,7 @@
     <hr>
     <div *ngIf="orderProducts.length != 0" class="d-flex justify-content-around">
         <button class="btn btn-info" (click)="showCart()" >Koszyk</button>
-        <button class="btn btn-info" routerLink="/order" >Zamawiam!</button>
+        <button class="btn btn-info" (click)="showOrder()" >Zamawiam!</button>
     </div>
     <p *ngIf="orderProducts.length == 0" class="px-3 text-center">
         W koszyku nie masz jeszcze żadnych produktów.

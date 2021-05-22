@@ -112,13 +112,7 @@ ul a:hover {
     padding:0px;
 }
 
-form div div{
-    padding: 10px 20px;
-}
 
-form div small {
-    visibility: hidden;
-}
 
 .visible {
     visibility: visible;
@@ -162,10 +156,6 @@ form div small {
         position: relative;
         top: 30px
     }
-
-    form div {
-        flex:1
-    }
 }
 
 /* xl */
@@ -186,9 +176,5 @@ form div small {
 
     #main-nav {
         margin-right: 130px;
-    }
-
-    form div {
-        margin: 20px 20px;
     }
  }

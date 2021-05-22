@@ -16,7 +16,7 @@ import { ShopComponent } from './components/shop/shop/shop.component';
 import { CategoryBarComponent } from './components/shop/category-bar/category-bar.component';
 import { ShopProductsComponent } from './components/shop/shop-products/shop-products.component';
 import { ContactComponent } from './components/contact/contact/contact.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductViewComponent } from './components/product-view/product-view/product-view.component';
 import { ColorPickerComponent } from './components/product-view/color-picker/color-picker.component';
 import { SizePickerComponent } from './components/product-view/size-picker/size-picker.component';
@@ -29,7 +29,10 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { CartComponent } from './components/cart/cart/cart.component';
 import { CartDetailsComponent } from './components/cart/cart-details/cart-details.component';
 import { CartTotalsComponent } from './components/cart/cart-totals/cart-totals.component';
-import { OrderComponent } from './components/order/order/order.component'
+import { OrderComponent } from './components/order/order/order.component';
+import { OrderFormComponent } from './components/order/order-form/order-form.component';
+import { OrderTotalsComponent } from './components/order/order-totals/order-totals.component';
+import { OrderCompleteComponent } from './components/order-complete/order-complete/order-complete.component'
 
 @NgModule({
   declarations: [
@@ -56,6 +59,9 @@ import { OrderComponent } from './components/order/order/order.component'
     CartDetailsComponent,
     CartTotalsComponent,
     OrderComponent,
+    OrderFormComponent,
+    OrderTotalsComponent,
+    OrderCompleteComponent,
   ],
   imports: [
     BrowserModule,
@@ -64,7 +70,8 @@ import { OrderComponent } from './components/order/order/order.component'
     FormsModule,
     BrowserAnimationsModule,
     MatSidenavModule,
-    MatBadgeModule
+    MatBadgeModule, 
+    ReactiveFormsModule
   ],
   exports: [MatSidenavModule, MatBadgeModule],
   providers: [],
