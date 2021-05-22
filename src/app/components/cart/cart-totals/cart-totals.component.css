@@ -1,0 +1,20 @@
+div, td {
+    font-family: monospace, sans-serif;
+}
+
+td {
+    width: 200px;
+}
+
+.total-td {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.summary-header {
+    font-size: 1.4rem;
+}
+
+#order-btn {
+    font-size: 1.4rem;
+}

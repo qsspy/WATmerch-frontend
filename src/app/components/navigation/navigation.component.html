@@ -1,6 +1,6 @@
   <nav class="d-flex flex-column flex-md-row justify-content-between">
     <div id="main-nav" class="flex-center order-md-2">
-        <a (click)="toggleOuterSidenav()"
+        <a (click)="toggleOuterSidenav()" [matBadge]="cartProductsCount" matBadgeSize="small"
         class="fa fa-shopping-basket fa-lg color-grey m-2" aria-hidden="true">
         </a>
         <button class="btn btn-secondary m-2 ms-md-4 me-xl-0">LOGIN</button>
@@ -13,8 +13,9 @@
             <a routerLink="/home" (click)="hideMenu()">Strona Główna</a>
             <a routerLink='/shop' (click)="hideMenu()">Sklep</a>
             <a href="account.html" (click)="hideMenu()">Konto użytkownika</a>
-            <a href="cart.html" (click)="hideMenu()">Koszyk</a>
+            <a routerLink='/cart' (click)="hideMenu()">Koszyk</a>
             <a routerLink='/contact' (click)="hideMenu()">Kontakt</a>
+            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" (click)="hideMenu()">CRM (tylko dla administratora!)</a>
         </ul>
         <div class="order-md-2">
             <div class="d-flex align-items-center">

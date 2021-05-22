@@ -1,0 +1,11 @@
+<div class="bg-white p-3">
+    <div *ngIf="orderExists" class="d-flex flex-column">
+        <app-cart-details></app-cart-details>
+        <div class="align-self-end my-4">
+            <app-cart-totals></app-cart-totals>
+        </div>
+    </div>
+    <div *ngIf="!orderExists" class="flex-center alert alert-warning m-5">
+        <p class="mb-0">Twój koszyk jest pusty :/</p>
+    </div>
+</div>

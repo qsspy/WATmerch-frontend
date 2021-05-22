@@ -23,8 +23,13 @@ import { SizePickerComponent } from './components/product-view/size-picker/size-
 import { QuantityPickerComponent } from './components/product-view/quantity-picker/quantity-picker.component';
 import { ProductInfoComponent } from './components/product-view/product-info/product-info.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatSidenavModule} from '@angular/material/sidenav';
-import { SidebarComponent } from './components/sidebar/sidebar.component'
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatBadgeModule } from '@angular/material/badge'
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { CartComponent } from './components/cart/cart/cart.component';
+import { CartDetailsComponent } from './components/cart/cart-details/cart-details.component';
+import { CartTotalsComponent } from './components/cart/cart-totals/cart-totals.component';
+import { OrderComponent } from './components/order/order/order.component'
 
 @NgModule({
   declarations: [
@@ -46,7 +51,11 @@ import { SidebarComponent } from './components/sidebar/sidebar.component'
     SizePickerComponent,
     QuantityPickerComponent,
     ProductInfoComponent,
-    SidebarComponent
+    SidebarComponent,
+    CartComponent,
+    CartDetailsComponent,
+    CartTotalsComponent,
+    OrderComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,9 +63,10 @@ import { SidebarComponent } from './components/sidebar/sidebar.component'
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatBadgeModule
   ],
-  exports: [MatSidenavModule],
+  exports: [MatSidenavModule, MatBadgeModule],
   providers: [],
   bootstrap:[AppComponent]
 })

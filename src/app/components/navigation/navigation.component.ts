@@ -1,6 +1,8 @@
 import { EventEmitter, HostListener, Output } from '@angular/core';
 import { Component, OnInit, AfterViewInit, ElementRef, ViewChild, AfterContentInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { OrderProductModel } from 'src/app/models/order/order-product-model';
+import { CartService } from 'src/app/services/cart.service';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -21,10 +23,18 @@ export class NavigationComponent implements OnInit, AfterViewInit {
   private _barsAwesome: String = 'fa-bars'
   private _arrowAwesome: String = 'fa-arrow-down'
 
+  cartProductsCount = 0
+
   constructor(
     private productService : ProductService,
+    private cartService : CartService,
     private router : Router) { }
-  ngOnInit(): void { }
+  ngOnInit(): void { 
+    this.cartService.orderProducts.subscribe((data : OrderProductModel[]) => {
+      this.cartProductsCount = data.length
+    })
+  }
+
   ngAfterViewInit(): void {
     this.navMenu.nativeElement.style.transition = 'max-height 0.5s, opacity 0.5s'
     this.navButton.nativeElement.addEventListener('click', () => {

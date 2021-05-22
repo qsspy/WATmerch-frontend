@@ -1,0 +1,41 @@
+.image-wrapper {
+    width: 100px;
+    height: 100px;
+}
+
+button {
+    color: white;
+    font-weight: bold;
+    font-family: monospace,sans-serif;
+}
+
+img {
+    height: 90%;
+}
+
+a {
+    font-family: monospace, sans-serif;
+    font-size: 1.2rem;
+}
+
+span {
+    font-family: monospace, sans-serif;
+    font-size: 1.2rem;
+}
+
+.price-span {
+    font-weight: bold;
+}
+
+.delete-wrapper {
+    border-left: 1px solid grey;
+    cursor: pointer;
+}
+
+#total {
+    font-family: monospace,sans-serif;
+}
+
+.main-container {
+    overflow: scroll;
+}

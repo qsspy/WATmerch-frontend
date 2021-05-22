@@ -1,0 +1,33 @@
+<div class="d-flex flex-column">
+    <table class="table table-hover table-bordered">
+        <thead>
+            <th></th>
+            <th></th>
+            <th>Nazwa</th>
+            <th>Cena</th>
+            <th>Ilość</th>
+            <th class="d-none d-md-table-cell">Suma cząstkowa</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let product of orderProducts, let i = index">
+                <td>
+                    <div class="flex-center delete-wrapper" (click)="deleteProduct(product.barcode)">
+                        <i class="fa fa-times" aria-hidden="true"></i>
+                    </div>
+                </td>
+                <td>
+                    <img [src]="product.imageUrl">
+                </td>
+                <td>
+                    <a [routerLink]="['/product', product.barcode]">{{product.name}}</a>
+                </td>
+                <td>{{product.calculatedPrice | number : '1.2-2'}}zł</td>
+                <td>
+                    <input type="number" class="fomr-control" min=1 max=99 [(ngModel)]="product.quantity" (change)="onChangeQuantity($event, product)">
+                </td>
+                <td class="d-none d-md-table-cell">{{subtotals[i] | number : '1.2-2'}}zł</td>
+            </tr>
+        </tbody>
+    </table>
+    <button class="btn btn-secondary mt-3 align-self-end" (click)="updateProducts()" [disabled]="!updateEnabled">Aktualizuj</button>
+</div>

@@ -9,10 +9,17 @@ export class QuantityPickerComponent implements OnInit {
 
   count = 1
   @Input("max-value") maxValue!: string
+  @Input("init-value") initValue : string = "1"
 
   constructor() { }
 
   ngOnInit(): void {
+
+    if(+this.initValue < 1) {
+      this.count = 1
+    } else {
+      this.count = +this.initValue
+    }
   }
 
   decrement() {

@@ -1,0 +1,17 @@
+<div class="bg-secondary summary-header text-center color-white py-2">PODSUMOWANIE</div>
+<table class="table table-bordered">
+    <tbody>
+        <tr *ngFor="let subtotal of subtotals, let i = index">
+            <td>
+                <span *ngIf="i==0">Sumy cząstkowe :</span>
+            </td>
+            <td>{{subtotal | number : '1.2-2'}}zł</td>
+        </tr>
+        <tr>
+            <td>Suma :</td>
+            <td class="total-td">{{total | number : '1.2-2'}}zł</td>
+        </tr>
+    </tbody>
+</table>
+<button routerLink="/order"
+        id="order-btn" class="btn btn-primary w-100">Zamawiam!</button>

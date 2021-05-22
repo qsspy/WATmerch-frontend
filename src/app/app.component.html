@@ -1,10 +1,8 @@
 <mat-sidenav-container>
   <mat-sidenav #sidenav position="end" fixedInViewport=true>
     <!-- Sidenav content -->
-
-    <button (click)="sidenav.toggle()" id='back-button'
-            class="btn btn-info">Zamknij</button>
-    <app-sidebar></app-sidebar>
+    
+    <app-sidebar (sidenavToggle)="sidenav.toggle()"></app-sidebar>
   </mat-sidenav>
   <mat-sidenav-content>
     <!-- Site content -->

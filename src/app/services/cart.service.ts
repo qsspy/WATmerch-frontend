@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { BehaviorSubject } from 'rxjs';
 import { OrderProductModel } from '../models/order/order-product-model';
 import { ProductModel } from '../models/product/product-model';
@@ -8,9 +9,22 @@ import { ProductModel } from '../models/product/product-model';
 })
 export class CartService {
 
+  private _cartStorageKey = 'WATmerch-cart'
+
   orderProducts: BehaviorSubject<OrderProductModel[]> = new BehaviorSubject<OrderProductModel[]>([])
 
-  constructor() { }
+  constructor(private sanitizer : DomSanitizer) {
+
+    let savedData = window.localStorage.getItem(this._cartStorageKey)
+    if(savedData) {
+      let savedProducts : OrderProductModel[] = JSON.parse(savedData)
+      savedProducts.forEach( product => {
+            let objectURL = 'data:image/jpeg;base64,' + product.image
+            product.imageUrl = this.sanitizer.bypassSecurityTrustUrl(objectURL)
+      })
+      this.orderProducts.next(savedProducts)
+    }
+  }
 
   appendProduct(productModel: ProductModel, imageUrl: any, quantity: number) {
 
@@ -37,5 +51,17 @@ export class CartService {
     }
 
     this.orderProducts.next(tempProducts)
+    window.localStorage.setItem(this._cartStorageKey,JSON.stringify(tempProducts))
+  }
+
+  removeProduct(barcode : string) {
+    let tempProducts = this.orderProducts.value.filter(product => product.barcode != barcode)
+    this.orderProducts.next(tempProducts)
+    window.localStorage.setItem(this._cartStorageKey,JSON.stringify(tempProducts))
+  }
+
+  addNewProductSet(orderProducts : OrderProductModel[]) {
+    this.orderProducts.next(orderProducts)
+    window.localStorage.setItem(this._cartStorageKey, JSON.stringify(orderProducts))
   }
 }
