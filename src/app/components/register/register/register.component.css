@@ -1,0 +1,48 @@
+.login-wrapper {
+    font-size: 1.2rem;
+    font-family: monospace, sans-serif;
+    max-width: 400px;
+    background-color: rgb(243, 244, 245);
+    border-radius: 5px;
+    box-shadow: 0px 0px 19px -1px rgba(0,0,0,0.4);
+    padding: 20px;
+    margin: 20px auto;
+}
+
+.form-group {
+    margin: 10px 0px;
+}
+
+a {
+    color: blue!important;
+    text-decoration: underline!important;
+}
+
+small {
+    color: red;
+}
+
+img {
+    clip-path: circle(50% at 50% 50%);
+
+    max-height: 200px;
+    max-width: 200px;
+}
+
+button {
+    font-size: 1.3rem;
+}
+
+small {
+    color: red;
+}
+
+
+
+/* md */
+@media (min-width: 768px) {
+
+    .login-wrapper {
+        max-width: 800px;
+    }
+}

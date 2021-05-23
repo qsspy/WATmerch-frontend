@@ -1,0 +1,118 @@
+<div class="login-wrapper">
+    <h2 class="mb-4 text-center">Rejestracja</h2>
+    <form [formGroup]="registerForm">
+        <div class="d-flex flex-column flex-md-row">
+            <!-- Required and optional data  -->
+            <div class="flex-fill me-2">
+                <h4>Dane wymagane*</h4>
+                <!-- Required -->
+                <div class="form-group" formGroupName="userDetails">
+                    <label>Imię</label>
+                    <input type="text" class="form-control" placeholder="Imię" formControlName="firstName">
+                    <small  *ngIf="firstName!.invalid && (firstName!.touched || firstName!.dirty)"
+                            >Pole jest wymagane!</small>
+                </div>
+                <div class="form-group" formGroupName="userDetails">
+                    <label>Nazwisko</label>
+                    <input type="text" class="form-control" placeholder="Nazwisko" formControlName="lastName">
+                    <small  *ngIf="lastName!.invalid && (lastName!.touched || lastName!.dirty)"
+                            >Pole jest wymagane!</small>
+                </div>
+                <div class="form-group">
+                    <label>Nazwa użytkownika</label>
+                    <input type="text" class="form-control" placeholder="Nazwa użytkownika" formControlName="username">
+                    <div *ngIf="username!.touched || username!.dirty"
+                         class="d-flex flex-column">
+                        <small  *ngIf="username!.errors?.required"
+                                >Pole jest wymagane!</small>
+                        <small  *ngIf="username!.errors?.minlength"
+                                >Za krótko!</small>
+                        <small  *ngIf="username!.errors?.whitespace"
+                                >Pole zawiera znaki białe!</small>
+                        <small  *ngIf="usernameTaken"
+                                >Nazwa jest zajęta!</small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Hasło</label>
+                    <input type="password" class="form-control" placeholder="Hasło" formControlName="password">
+                    <div *ngIf="password!.touched || password!.dirty"
+                         class="d-flex flex-column">
+                         <small *ngIf="password!.errors?.required"
+                         >Pole jest wymagane!</small>
+                         <small *ngIf="password!.errors?.minlength"
+                         >Za krótko!</small>
+                         <small *ngIf="password!.errors?.whitespace"
+                         >Pole zawiera znaki białe!</small>
+                        <small  *ngIf="passwordsDoesntMatch"
+                        >Hasła się nie zgadzają!</small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Powtórz hasło</label>
+                    <input type="password" class="form-control" placeholder="Powtórz hasło" formControlName="passwordConfirm">
+                    <div *ngIf="passwordConfirm!.touched || passwordConfirm!.dirty"
+                         class="d-flex flex-column">
+                         <small *ngIf="passwordConfirm!.errors?.required"
+                         >Pole jest wymagane!</small>
+                         <small *ngIf="passwordConfirm!.errors?.minlength"
+                         >Za krótko!</small>
+                         <small *ngIf="passwordConfirm!.errors?.whitespace"
+                         >Pole zawiera znaki białe!</small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" class="form-control" placeholder="Email" formControlName="email">
+                    <div *ngIf="email!.touched || email!.dirty"
+                         class="d-flex flex-column">
+                        <small *ngIf="email!.invalid"
+                        >Pole jest nieprawidłowe!</small>
+                        <small *ngIf="emailTaken"
+                        >Email jest zajęty!</small>
+                    </div>
+                </div>
+                <div class="form-group" formGroupName="userDetails">
+                    <label>Numer telefonu</label>
+                    <input type="tel" class="form-control" placeholder="Numer telefonu" formControlName="phoneNumber">
+                    <small *ngIf="phoneNumber!.invalid  && (phoneNumber!.touched || phoneNumber!.dirty)"
+                    >Pole jest nieprawidłowe!</small>
+                </div>
+                <div class="form-group" formGroupName="userDetails">
+                    <label>Data urodzenia</label>
+                    <div class="d-flex">
+                        <input class="form-control " readOnly placeholder="yyyy-mm-dd" name="dp"
+                            ngbDatepicker #d="ngbDatepicker" formControlName="birthDate">
+                        <button style="padding: 0px 10px!important;"
+                                class="btn btn-secondary calendar" (click)="d.toggle()" type="button">
+                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                    <small *ngIf="birthDate!.errors?.required  && (birthDate!.touched || birthDate!.dirty)"
+                         >Pole jest wymagane!</small>
+                </div>
+            </div>
+            <div class="flex-fill ms-md-2" formGroupName="userDetails">
+                <h4>Dane dodatkowe</h4>
+                <div class="form-group">
+                    <label>Nazwa firmy</label>
+                    <input type="tel" class="form-control" placeholder="Nazwa firmy" formControlName="company">
+                </div>
+                <div class="form-group">
+                    <label>NIP</label>
+                    <input type="tel" class="form-control" placeholder="NIP" formControlName="nip">
+                </div>
+                <div class="form-group">
+                    <label>Avatar</label>
+                    <input type="file" class="form-control" accept="image/*" (change)="onChange($event)" formControlName="avatar">
+                    <small *ngIf="invalidFile">
+                    Możesz wybrać tylko obraz!</small>
+                </div>
+                <div class="flex-center img-wrapper mt-4">
+                    <img [src]="imageSrc" alt="">
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-secondary w-100 my-4" (click)="onSubmit($event)">Rejestruj</button>
+    </form>
+</div>

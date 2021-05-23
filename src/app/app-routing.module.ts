@@ -8,6 +8,7 @@ import { LoginComponent } from './components/login/login/login.component';
 import { OrderCompleteComponent } from './components/order-complete/order-complete/order-complete.component';
 import { OrderComponent } from './components/order/order/order.component';
 import { ProductViewComponent } from './components/product-view/product-view/product-view.component';
+import { RegisterComponent } from './components/register/register/register.component';
 import { ShopComponent } from './components/shop/shop/shop.component';
 
 const routes: Routes = [
@@ -20,6 +21,7 @@ const routes: Routes = [
   {path: 'orderComplete', component: OrderCompleteComponent},
   {path: 'login', component: LoginComponent},
   {path: 'account', component: AccountComponent},
+  {path: 'register', component: RegisterComponent},
   {path: '**', redirectTo: 'home'}
 ];
 

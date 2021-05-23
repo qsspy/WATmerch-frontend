@@ -38,6 +38,9 @@ import { LoginComponent } from './components/login/login/login.component';
 import { AccountComponent } from './components/account/account/account.component';
 import { httpInterceptProviders } from './http-interceptors/intercept';
 import { AuthInterceptor } from './http-interceptors/auth-interceptor';
+import { RegisterComponent } from './components/register/register/register.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
+
 
 @NgModule({
   declarations: [
@@ -68,7 +71,8 @@ import { AuthInterceptor } from './http-interceptors/auth-interceptor';
     OrderTotalsComponent,
     OrderCompleteComponent,
     LoginComponent,
-    AccountComponent
+    AccountComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -79,7 +83,8 @@ import { AuthInterceptor } from './http-interceptors/auth-interceptor';
     MatSidenavModule,
     MatBadgeModule, 
     ReactiveFormsModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    NgbModule
   ],
   exports: [MatSidenavModule, MatBadgeModule],
   providers: [AuthInterceptor,httpInterceptProviders],

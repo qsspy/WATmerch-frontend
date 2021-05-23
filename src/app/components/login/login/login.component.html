@@ -1,5 +1,5 @@
 <div class="login-wrapper">
-    <h2>LOGIN</h2>
+    <h2>Logowanie</h2>
     <form class="d-flex flex-column" [formGroup]="loginForm">
         <div class="form-group">
             <label>Nazwa użytkownika</label>
@@ -21,10 +21,10 @@
                 <small *ngIf="invalidPassword" class="form-text">Niepoprawne hasło!</small>
             </div>
         </div>
-        <span>Nie masz konta? <a>Zajerestruj się!</a></span>
+        <span>Nie masz konta? <a routerLink="/register">Zajerestruj się!</a></span>
         <div class="d-flex justify-content-between mt-4 align-items-center">
             <mat-spinner [ngClass]="loading ? 'visible' : 'hidden'" diameter="30"></mat-spinner>
-            <button (click)="login($event)" class="btn btn-secondary">LOGIN</button>
+            <button (click)="login($event)" class="btn btn-secondary">Zaloguj</button>
         </div>
     </form>
 </div>
