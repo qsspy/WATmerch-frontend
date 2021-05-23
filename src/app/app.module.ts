@@ -32,7 +32,7 @@ import { CartTotalsComponent } from './components/cart/cart-totals/cart-totals.c
 import { OrderComponent } from './components/order/order/order.component';
 import { OrderFormComponent } from './components/order/order-form/order-form.component';
 import { OrderTotalsComponent } from './components/order/order-totals/order-totals.component';
-import { OrderCompleteComponent } from './components/order-complete/order-complete/order-complete.component'
+import { OrderCompleteComponent } from './components/order-complete/order-complete/order-complete.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +61,7 @@ import { OrderCompleteComponent } from './components/order-complete/order-comple
     OrderComponent,
     OrderFormComponent,
     OrderTotalsComponent,
-    OrderCompleteComponent,
+    OrderCompleteComponent
   ],
   imports: [
     BrowserModule,

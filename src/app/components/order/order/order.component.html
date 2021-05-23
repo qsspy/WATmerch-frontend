@@ -1,6 +1,6 @@
 <app-order-form #form></app-order-form>
 <div *ngIf="productsExists">
-    <app-order-totals></app-order-totals>
+    <app-order-totals #totals></app-order-totals>
     <button class="btn btn-primary" (click)="placeOrder($event)">Zamawiam!</button>
 </div>
 <div *ngIf="!productsExists" class="flex-center alert alert-warning m-5">

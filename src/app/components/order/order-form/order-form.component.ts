@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
 import { AddressModel } from 'src/app/models/address/address-model';
 import { PurchaseModel } from 'src/app/models/purchase/purchase-model';
+import { PurchaseService } from 'src/app/services/purchase.service';
 
 @Component({
   selector: 'app-order-form',
@@ -12,7 +14,8 @@ export class OrderFormComponent implements OnInit {
 
   orderFormGroup!: FormGroup
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(
+    private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
 
@@ -51,30 +54,32 @@ export class OrderFormComponent implements OnInit {
     return true
   }
 
-  buildPurchaseModelFromForm() {
-    let model = new PurchaseModel()
-    model.purchaseDate = new Date()
+  get billingAddress() : AddressModel{ 
+    
+    let billingAddress = new AddressModel()
+    billingAddress.city = this.billingCity?.value
+    billingAddress.country = this.billingCountry?.value
+    billingAddress.firstName = this.billingFirstName?.value
+    billingAddress.street = this.billingStreet?.value
+    billingAddress.lastName = this.billingLastName?.value
+    billingAddress.phoneNumber = this.billingPhoneNumber?.value
+    billingAddress.postalCode = this.billingPostalCode?.value
+
+    return billingAddress
+  }
+
+  get shippingAddress() : AddressModel {
 
     let shippingAddress = new AddressModel()
     shippingAddress.city = this.shippingCity?.value
     shippingAddress.country = this.shippingCountry?.value
     shippingAddress.firstName = this.shippingFirstName?.value
+    shippingAddress.street = this.shippingStreet?.value
     shippingAddress.lastName = this.shippingLastName?.value
     shippingAddress.phoneNumber = this.shippingPhoneNumber?.value
     shippingAddress.postalCode = this.shippingPostalCode?.value
 
-    let billingAddress = new AddressModel()
-    billingAddress.city = this.billingCity?.value
-    billingAddress.country = this.billingCountry?.value
-    billingAddress.firstName = this.billingFirstName?.value
-    billingAddress.lastName = this.billingLastName?.value
-    billingAddress.phoneNumber = this.billingPhoneNumber?.value
-    billingAddress.postalCode = this.billingPostalCode?.value
-
-    model.shippingAddress = shippingAddress
-    model.billingAddress = billingAddress
-
-    console.log(model)
+    return shippingAddress
   }
 
   copyShippingToBilling(event: any) {
