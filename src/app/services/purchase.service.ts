@@ -36,9 +36,6 @@ export class PurchaseService {
 
     const headers = new HttpHeaders({'Content-Type':'application/json; charset=utf-8'});
 
-    console.log(JSON.stringify(model))
-    console.log('kurwwwa!')
-
     return this.http.post(url,JSON.stringify(model),{headers: headers})
   }
 }

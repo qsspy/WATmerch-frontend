@@ -31,13 +31,10 @@ export class ShopProductsComponent implements OnInit {
   ngOnInit(): void {
 
     this.productService.shopProductsSubject.subscribe((data : ProductModel[]) => {
-      console.log('receiving')
       if(this._appendToken) {
         this.products = this.products.concat(data)
         this._appendToken = false
       } else {
-        console.log('no token')
-        console.log(data)
         this.products = data
         this.productsImageUrls = []
         this._pagesLoaded = 0

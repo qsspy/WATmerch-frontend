@@ -1,29 +1,32 @@
-  <nav class="d-flex flex-column flex-md-row justify-content-between">
-    <div id="main-nav" class="flex-center order-md-2">
+<nav class="d-flex flex-column flex-md-row justify-content-between">
+    <div id="main-nav" class="flex-center order-md-2 my-2">
         <a (click)="toggleOuterSidenav()" [matBadge]="cartProductsCount" matBadgeSize="small"
-        class="fa fa-shopping-basket fa-lg color-grey m-2" aria-hidden="true">
+            class="fa fa-shopping-basket fa-lg color-grey mx-3" aria-hidden="true">
         </a>
-        <button class="btn btn-secondary m-2 ms-md-4 me-xl-0">LOGIN</button>
+        <img *ngIf="userLoggedIn" [src]="userImageUrl" routerLink='/account'>
+        <button routerLink="/login" *ngIf="!userLoggedIn" class="btn btn-secondary mx-3 ">Zaloguj</button>
+        <button *ngIf="userLoggedIn" class="btn btn-secondary mx-3" (click)="logout()">Wyloguj</button>
     </div>
     <div class="d-flex justify-content-between justify-content-md-start align-items-center flex-fill">
         <button #navButton id="nav-button" class="btn btn-secondary flex-center me-md-2">
             <i #navIcon class="fa fa-bars fa-lg"></i>
         </button>
-        <ul #navMenu id="menu" class="bg-grey color-white m-0 d-flex flex-column" style="z-index: 2; position: absolute; width: 100%;">
+        <ul #navMenu id="menu" class="bg-grey color-white m-0 d-flex flex-column"
+            style="z-index: 2; position: absolute; width: 100%;">
             <a routerLink="/home" (click)="hideMenu()">Strona Główna</a>
             <a routerLink='/shop' (click)="hideMenu()">Sklep</a>
-            <a href="account.html" (click)="hideMenu()">Konto użytkownika</a>
+            <a *ngIf="userLoggedIn" routerLink='/account' (click)="hideMenu()">Konto użytkownika</a>
             <a routerLink='/cart' (click)="hideMenu()">Koszyk</a>
             <a routerLink='/contact' (click)="hideMenu()">Kontakt</a>
-            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" (click)="hideMenu()">CRM (tylko dla administratora!)</a>
+            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" (click)="hideMenu()">CRM (tylko dla
+                administratora!)</a>
         </ul>
         <div class="order-md-2">
             <div class="d-flex align-items-center">
                 <button class="btn btn-secondary mx-2" (click)="searchProduct()">
                     <i class="fa fa-search fa-lg px-3"></i>
                 </button>
-                <input #searchText type="text" class="form-control"
-                       (keydown.enter)="searchProduct()">
+                <input #searchText type="text" class="form-control" (keydown.enter)="searchProduct()">
             </div>
         </div>
         <h3 class="wat-name order-md-1 me-md-5 pe-2" (click)="backToHome()">WATmerch.</h3>

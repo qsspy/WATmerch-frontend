@@ -2,8 +2,11 @@ import { EventEmitter, HostListener, Output } from '@angular/core';
 import { Component, OnInit, AfterViewInit, ElementRef, ViewChild, AfterContentInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { OrderProductModel } from 'src/app/models/order/order-product-model';
+import { UserModel } from 'src/app/models/user/user-model';
 import { CartService } from 'src/app/services/cart.service';
 import { ProductService } from 'src/app/services/product.service';
+import { UserService } from 'src/app/services/user.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-navigation',
@@ -24,14 +27,25 @@ export class NavigationComponent implements OnInit, AfterViewInit {
   private _arrowAwesome: String = 'fa-arrow-down'
 
   cartProductsCount = 0
+  userLoggedIn = false
+  userImageUrl = ''
 
   constructor(
     private productService : ProductService,
     private cartService : CartService,
-    private router : Router) { }
+    private router : Router,
+    private userService : UserService) { }
   ngOnInit(): void { 
     this.cartService.orderProducts.subscribe((data : OrderProductModel[]) => {
       this.cartProductsCount = data.length
+    })
+
+    this.userService.currentUserLogoUrl.subscribe((data)=> {
+      this.userImageUrl = data
+    })
+
+    this.userService.currentUser.subscribe((data : UserModel) => {
+      this.userLoggedIn = data.username != ''
     })
   }
 
@@ -89,5 +103,16 @@ export class NavigationComponent implements OnInit, AfterViewInit {
 
   backToHome() {
     this.router.navigate(['/home'])
+  }
+
+  logout() {
+    this.userService.logout()
+
+    this.router.navigate(['/login'])
+
+    Swal.fire({
+      title: 'Pomyślnie wylogowano!',
+      icon: 'success'
+    })
   }
 }

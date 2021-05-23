@@ -1,0 +1,30 @@
+<div class="login-wrapper">
+    <h2>LOGIN</h2>
+    <form class="d-flex flex-column" [formGroup]="loginForm">
+        <div class="form-group">
+            <label>Nazwa użytkownika</label>
+            <input type="text" class="form-control" placeholder="Nazwa użytkownika" formControlName="username">
+            <div class="d-flex flex-column">
+                <small *ngIf="username!.invalid && (username!.dirty || username!.touched)" class="form-text">To pole
+                    jest
+                    wymagane!</small>
+                <small *ngIf="invalidUsername" class="form-text">Nie ma takiego użytkownika!</small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Hasło</label>
+            <input type="password" class="form-control" placeholder="Hasło" formControlName="password">
+            <div class="d-flex flex-column">
+                <small *ngIf="password!.invalid && (password!.dirty || password!.touched)" class="form-text">To pole
+                    jest
+                    wymagane!</small>
+                <small *ngIf="invalidPassword" class="form-text">Niepoprawne hasło!</small>
+            </div>
+        </div>
+        <span>Nie masz konta? <a>Zajerestruj się!</a></span>
+        <div class="d-flex justify-content-between mt-4 align-items-center">
+            <mat-spinner [ngClass]="loading ? 'visible' : 'hidden'" diameter="30"></mat-spinner>
+            <button (click)="login($event)" class="btn btn-secondary">LOGIN</button>
+        </div>
+    </form>
+</div>

@@ -14,6 +14,14 @@ export class OrderFormComponent implements OnInit {
 
   orderFormGroup!: FormGroup
 
+  constainsNoWhitespace(control: FormControl) {
+    const isWhitespace = (control.value || '').trim().length === 0;
+    const isValid = !isWhitespace;
+    return isValid ? null : { 'whitespace': true };
+  }
+
+
+
   constructor(
     private formBuilder: FormBuilder) { }
 
@@ -21,28 +29,24 @@ export class OrderFormComponent implements OnInit {
 
     this.orderFormGroup = this.formBuilder.group({
       shippingAddress: this.formBuilder.group({
-        firstName: new FormControl('', [Validators.required]),
-        lastName: new FormControl('', [Validators.required]),
-        street: new FormControl('', [Validators.required]),
-        postalCode: new FormControl('', [Validators.required]),
-        city: new FormControl('', [Validators.required]),
-        country: new FormControl('', [Validators.required]),
-        phoneNumber: new FormControl('', [Validators.required, Validators.pattern(/^\d+$/)])
+        firstName: new FormControl('', [Validators.required, Validators.pattern(/^\S.*\S$/)]),
+        lastName: new FormControl('', [Validators.required, Validators.pattern(/^\S.*\S$/)]),
+        street: new FormControl('', [Validators.required, Validators.pattern(/^\S.*\S$/)]),
+        postalCode: new FormControl('', [Validators.required, Validators.pattern(/^\S.*\S$/)]),
+        city: new FormControl('', [Validators.required, Validators.pattern(/^\S.*\S$/)]),
+        country: new FormControl('', [Validators.required, Validators.pattern(/^\S.*\S$/)]),
+        phoneNumber: new FormControl('', [Validators.required, Validators.pattern(/^\d+$/), Validators.pattern(/^\S.*\S$/)])
       }),
       billingAddress: this.formBuilder.group({
-        firstName: new FormControl('', [Validators.required]),
-        lastName: new FormControl('', [Validators.required]),
-        street: new FormControl('', [Validators.required]),
-        postalCode: new FormControl('', [Validators.required]),
-        city: new FormControl('', [Validators.required]),
-        country: new FormControl('', [Validators.required]),
-        phoneNumber: new FormControl('', [Validators.required, Validators.pattern(/^\d+$/)])
+        firstName: new FormControl('', [Validators.required, Validators.pattern(/^\S.*\S$/)]),
+        lastName: new FormControl('', [Validators.required, Validators.pattern(/^\S.*\S$/)]),
+        street: new FormControl('', [Validators.required, Validators.pattern(/^\S.*\S$/)]),
+        postalCode: new FormControl('', [Validators.required, Validators.pattern(/^\S.*\S$/)]),
+        city: new FormControl('', [Validators.required, Validators.pattern(/^\S.*\S$/)]),
+        country: new FormControl('', [Validators.required, Validators.pattern(/^\S.*\S$/)]),
+        phoneNumber: new FormControl('', [Validators.required, Validators.pattern(/^\d+$/), Validators.pattern(/^\S.*\S$/)])
       })
     })
-  }
-
-  submitForm() {
-    console.log('submit called')
   }
 
   isFormValid() {
@@ -54,8 +58,8 @@ export class OrderFormComponent implements OnInit {
     return true
   }
 
-  get billingAddress() : AddressModel{ 
-    
+  get billingAddress(): AddressModel {
+
     let billingAddress = new AddressModel()
     billingAddress.city = this.billingCity?.value
     billingAddress.country = this.billingCountry?.value
@@ -68,7 +72,7 @@ export class OrderFormComponent implements OnInit {
     return billingAddress
   }
 
-  get shippingAddress() : AddressModel {
+  get shippingAddress(): AddressModel {
 
     let shippingAddress = new AddressModel()
     shippingAddress.city = this.shippingCity?.value

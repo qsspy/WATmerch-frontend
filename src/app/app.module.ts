@@ -25,6 +25,7 @@ import { ProductInfoComponent } from './components/product-view/product-info/pro
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatBadgeModule } from '@angular/material/badge'
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { CartComponent } from './components/cart/cart/cart.component';
 import { CartDetailsComponent } from './components/cart/cart-details/cart-details.component';
@@ -33,6 +34,10 @@ import { OrderComponent } from './components/order/order/order.component';
 import { OrderFormComponent } from './components/order/order-form/order-form.component';
 import { OrderTotalsComponent } from './components/order/order-totals/order-totals.component';
 import { OrderCompleteComponent } from './components/order-complete/order-complete/order-complete.component';
+import { LoginComponent } from './components/login/login/login.component';
+import { AccountComponent } from './components/account/account/account.component';
+import { httpInterceptProviders } from './http-interceptors/intercept';
+import { AuthInterceptor } from './http-interceptors/auth-interceptor';
 
 @NgModule({
   declarations: [
@@ -61,7 +66,9 @@ import { OrderCompleteComponent } from './components/order-complete/order-comple
     OrderComponent,
     OrderFormComponent,
     OrderTotalsComponent,
-    OrderCompleteComponent
+    OrderCompleteComponent,
+    LoginComponent,
+    AccountComponent
   ],
   imports: [
     BrowserModule,
@@ -71,10 +78,11 @@ import { OrderCompleteComponent } from './components/order-complete/order-comple
     BrowserAnimationsModule,
     MatSidenavModule,
     MatBadgeModule, 
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatProgressSpinnerModule
   ],
   exports: [MatSidenavModule, MatBadgeModule],
-  providers: [],
+  providers: [AuthInterceptor,httpInterceptProviders],
   bootstrap:[AppComponent]
 })
 export class AppModule { }

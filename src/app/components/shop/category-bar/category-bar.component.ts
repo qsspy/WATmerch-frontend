@@ -1,7 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { CategoryModel } from 'src/app/models/product/category-model';
 import { CategoryService } from 'src/app/services/category.service';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
