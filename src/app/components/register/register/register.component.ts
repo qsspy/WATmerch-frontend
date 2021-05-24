@@ -1,5 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Byte } from '@angular/compiler/src/util';
+import { ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AddressModel } from 'src/app/models/address/address-model';
+import { UserDetailsModel } from 'src/app/models/user/user-details-model';
+import { UserModel } from 'src/app/models/user/user-model';
+import { UserService } from 'src/app/services/user.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -9,7 +17,9 @@ import Swal from 'sweetalert2';
 })
 export class RegisterComponent implements OnInit {
 
-  imageSrc: string | ArrayBuffer = 'assets/images/user.png'
+  private _defaultSrc = 'assets/images/user.png'
+  imageSrc: any
+  submitDisabled = false
 
   registerForm! : FormGroup
   private _emailPattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -26,14 +36,19 @@ export class RegisterComponent implements OnInit {
     return isValid ? null : { 'whitespace': true };
   }
 
-  constructor(private formBuilder : FormBuilder) { }
+  constructor(
+    private formBuilder : FormBuilder,
+    private userService : UserService,
+    private router : Router) { 
+    this.imageSrc = this._defaultSrc
+  }
 
   ngOnInit(): void {
 
     this.registerForm = this.formBuilder.group({
       username: ['',[Validators.required, Validators.minLength(4), this.constainsNoWhitespace]],
       password: ['',[Validators.required, Validators.minLength(6), this.constainsNoWhitespace]],
-      passwordConfirm: ['',[Validators.required, Validators.minLength(6), this.constainsNoWhitespace]],
+      confirmPass: ['',[Validators.required, Validators.minLength(6), this.constainsNoWhitespace]],
       email: ['',[Validators.pattern(this._emailPattern), Validators.required]],
       userDetails: this.formBuilder.group({
         firstName: ['',[Validators.required]],
@@ -56,7 +71,7 @@ export class RegisterComponent implements OnInit {
   }
 
   get passwordConfirm() {
-    return this.registerForm.get('passwordConfirm')
+    return this.registerForm.get('confirmPass')
   }
 
   get email() {
@@ -96,12 +111,26 @@ export class RegisterComponent implements OnInit {
     if (event.target.files && event.target.files[0]) {
       const file = event.target.files[0];
 
+      if(file.type != "image/png" && file.type != "image/jpeg") {
+        console.log('rejecting')
+        this.invalidFile = true
+        event.target.value = null
+        this.imageSrc = this._defaultSrc
+        return
+      }
+
+      this.invalidFile = false
+
       const reader = new FileReader();
-      reader.onload = e => this.imageSrc = reader.result!;
+
+      reader.addEventListener('load',event=>{
+        console.log(event)
+        this.imageSrc = event.target!.result
+      })
 
       reader.readAsDataURL(file);
     } else {
-      this.imageSrc = 'assets/images/user.png'
+      this.imageSrc = this._defaultSrc
     }
   }
 
@@ -109,15 +138,63 @@ export class RegisterComponent implements OnInit {
 
     this.passwordsDoesntMatch = this.password?.value != this.passwordConfirm?.value
 
-    if(this.registerForm.invalid || this.passwordsDoesntMatch) {
+    if(this.registerForm.invalid || this.passwordsDoesntMatch){
       this.registerForm.markAllAsTouched()
     } else {
 
-      Swal.fire({
-        title: 'Fuck yea!',
-        icon:'info'
-      })
+      const model = this.buildModel()
+
+      this.usernameTaken = false
+      this.emailTaken = false
+      this.submitDisabled = true
+      this.userService.register(model).subscribe(
+        () => {
+          this.submitDisabled = false
+          this.router.navigate(['/login'])
+          Swal.fire({
+            title: 'Rejestracja przebiegła pomyślnie, teraz możesz się zalogować!',
+            icon: 'success'
+          })
+        },
+        (error : HttpErrorResponse) => {
+          const message : string = error.error.details
+          if(message.includes('User')) {
+            console.log(error.error)
+            this.usernameTaken = true
+          } else if(message.includes('E-mail')) {
+            console.log(error.error)
+            this.emailTaken = true
+          } else {
+            Swal.fire({
+              title: 'Coś poszło nie tak :(',
+              icon: 'error'
+            })
+          }
+          this.submitDisabled = false
+        }
+      )
     }
   }
 
+  private buildModel() : UserModel {
+    
+    const model = new UserModel()
+    Object.assign(model,this.registerForm.value)
+
+    if(model.userDetails.birthDate) {
+      model.userDetails.birthDate = new Date(this.birthDate?.value.year, this.birthDate?.value.month, this.birthDate?.value.day)
+    }
+
+    model.shippingAddress = new AddressModel()
+    model.billingAddress = new AddressModel()
+
+    if(this.imageSrc != this._defaultSrc) {
+      model.userDetails.avatar = this.imageSrc.replace(/^data:image\/(png|jpg|jpeg);base64,/, "")
+      console.log(model.userDetails.avatar)
+    } else {
+      model.userDetails.avatar = undefined
+    }
+
+    return model
+  }
 }

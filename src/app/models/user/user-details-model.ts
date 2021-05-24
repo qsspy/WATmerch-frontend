@@ -8,5 +8,5 @@ export class UserDetailsModel {
     birthDate? : Date
     company?: string 
     nip?: string
-    avatar?: Byte[]
+    avatar?: Byte[] | undefined
 }

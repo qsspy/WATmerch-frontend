@@ -40,6 +40,12 @@ export class UserService {
     return this.http.post<UserModel>(url, JSON.stringify(credsModel), {headers: this.headers})
   }
 
+  register(user : UserModel) {
+    const url = this.basUrl + '/api/register'
+
+    return this.http.post<UserModel>(url,JSON.stringify(user), {headers: this.headers})
+  }
+
   logout () {
     this.currentUser.next(new UserModel())
     this.currentUserLogoUrl.next('assets/images/user.png')
