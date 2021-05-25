@@ -13,15 +13,11 @@ export class CartService {
 
   orderProducts: BehaviorSubject<OrderProductModel[]> = new BehaviorSubject<OrderProductModel[]>([])
 
-  constructor(private sanitizer : DomSanitizer) {
+  constructor() {
 
     let savedData = window.localStorage.getItem(this._cartStorageKey)
     if(savedData) {
       let savedProducts : OrderProductModel[] = JSON.parse(savedData)
-      savedProducts.forEach( product => {
-            let objectURL = 'data:image/jpeg;base64,' + product.image
-            product.imageUrl = this.sanitizer.bypassSecurityTrustUrl(objectURL)
-      })
       this.orderProducts.next(savedProducts)
     }
   }
@@ -45,7 +41,6 @@ export class CartService {
       orderProductModel.name = productModel.name
       orderProductModel.quantity = quantity
       orderProductModel.image = productModel.basicDetails?.logoImage!
-      orderProductModel.imageUrl = imageUrl
 
       tempProducts.push(orderProductModel)
     }

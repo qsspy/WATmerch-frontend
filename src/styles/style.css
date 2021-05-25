@@ -1,3 +1,7 @@
+html {
+    font-size: 12px;
+}
+
 a {
     text-decoration: inherit;
     color: inherit;
@@ -124,6 +128,10 @@ ul a:hover {
 
 /* md */
 @media (min-width: 768px) {
+
+    html {
+        font-size: 16px;
+    }
 
     #nav-button {
         height: 100px;

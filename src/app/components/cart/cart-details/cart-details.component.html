@@ -17,7 +17,7 @@
                     </div>
                 </td>
                 <td>
-                    <img [src]="product.imageUrl">
+                    <img [src]="product.image | byteArrayToImage">
                 </td>
                 <td>
                     <a [routerLink]="['/product', product.barcode]">{{product.name}}</a>

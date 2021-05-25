@@ -18,7 +18,6 @@ export class CartDetailsComponent implements OnInit {
   updateEnabled = false
 
   constructor(
-    private router : Router,
     private cartService : CartService) { }
 
   ngOnInit(): void {

@@ -39,7 +39,10 @@ import { AccountComponent } from './components/account/account/account.component
 import { httpInterceptProviders } from './http-interceptors/intercept';
 import { AuthInterceptor } from './http-interceptors/auth-interceptor';
 import { RegisterComponent } from './components/register/register/register.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ByteArrayToImagePipe } from './pipes/byte-array-to-image.pipe';
+import { PurchaseHistoryComponent } from './components/account/purchase-history/purchase-history.component';
+import { UserDataPanelComponent } from './components/account/user-data-panel/user-data-panel.component'
 
 
 @NgModule({
@@ -72,7 +75,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
     OrderCompleteComponent,
     LoginComponent,
     AccountComponent,
-    RegisterComponent
+    RegisterComponent,
+    ByteArrayToImagePipe,
+    PurchaseHistoryComponent,
+    UserDataPanelComponent
   ],
   imports: [
     BrowserModule,

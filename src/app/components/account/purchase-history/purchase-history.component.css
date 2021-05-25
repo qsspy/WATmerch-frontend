@@ -1,0 +1,65 @@
+td {
+    height: 50px;
+    text-align: center;
+    vertical-align: middle;
+    font-family: monospace, sans-serif;
+}
+
+.status-tr td{
+    height: auto!important;
+}
+
+th {
+    text-align: center;
+}
+
+.summary-text {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.status-text {
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+img {
+    height: 95%;
+}
+
+.delete-wrapper {
+    cursor: pointer;
+}
+
+a {
+    color: orange;
+}
+
+input {
+    width: 50px;
+}
+
+body {
+    font-size: 10px;
+}
+
+/* md */
+@media (min-width: 768px) {
+
+    .summary-text {
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+
+    .status-text {
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+
+}
+
+/* xl */
+@media (min-width: 1200px) {
+
+    
+ }

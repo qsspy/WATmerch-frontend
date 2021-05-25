@@ -4,11 +4,11 @@
             <img [src]="productImageUrl" class="p-3">
         </div>
         <div class="mx-md-3">
-            <h1 class="my-3">{{product!.name}}</h1>
+            <h1 class="my-3">{{product?.name}}</h1>
             <div class="d-flex">
-                <h1 [ngStyle]="{'text-decoration': (product!.basicDetails!.discountPercent) ? 'line-through' : 'initial'}"
-                    class="px-1">{{product!.price | number : '1.2-2'}}zł</h1>
-                <h1 *ngIf="product!.basicDetails!.discountPercent" class="px-1">
+                <h1 [ngStyle]="{'text-decoration': (product?.basicDetails?.discountPercent) ? 'line-through' : 'initial'}"
+                    class="px-1">{{product?.price | number : '1.2-2'}}zł</h1>
+                <h1 *ngIf="product?.basicDetails?.discountPercent" class="px-1">
                     {{product!.price-(product!.price*product!.basicDetails!.discountPercent!) | number : '1.2-2'}}zł</h1>
             </div>
             <div class="my-2">
@@ -29,5 +29,5 @@
             </div>
         </div>
     </div>
-    <app-product-info [description]="product!.details!.longDescription"></app-product-info>
+    <app-product-info [description]="product?.details?.longDescription"></app-product-info>
 </div>

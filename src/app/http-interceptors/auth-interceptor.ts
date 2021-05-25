@@ -10,6 +10,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         
+        
         const user = this.userService.currentUser.value
         if(user.username == '') {
             return next.handle(req)

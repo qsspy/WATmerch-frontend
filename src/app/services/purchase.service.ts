@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment';
 import { AddressModel } from '../models/address/address-model';
 import { OrderProductApiModel } from '../models/order/order-product-api-model';
 import { OrderProductModel } from '../models/order/order-product-model';
+import { PurchaseExtendedModel } from '../models/purchase/purchase-extended-model';
 import { PurchaseModel } from '../models/purchase/purchase-model';
 
 @Injectable({
@@ -38,4 +39,15 @@ export class PurchaseService {
 
     return this.http.post(url,JSON.stringify(model),{headers: headers})
   }
+
+  getUserPurchases() {
+
+    const url = this._baseUrl + '/api/purchases?size=100'
+
+    return this.http.get<PurchasePage>(url)
+  }
+}
+
+export interface PurchasePage {
+  content : PurchaseExtendedModel[]
 }

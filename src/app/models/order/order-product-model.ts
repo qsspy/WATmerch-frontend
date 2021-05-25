@@ -6,5 +6,4 @@ export class OrderProductModel {
     calculatedPrice! : number
     quantity! : number
     image! : Byte[]
-    imageUrl : any
 }

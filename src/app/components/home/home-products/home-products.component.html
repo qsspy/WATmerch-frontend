@@ -1,8 +1,8 @@
 <section id="home-products" class="d-flex flex-column flex-md-row flex-wrap">
-    <div *ngFor="let product of randomProducts, let i = index"
+    <div *ngFor="let product of randomProducts"
          class="bg-white d-flex flex-column align-items-center my-4">
         <div class="flex-center">
-            <img [src]="randomProductsImageURLs[i]" alt="" class="home-product-img p-4">
+            <img [src]="product.basicDetails!.logoImage! | byteArrayToImage" alt="" class="home-product-img p-4">
         </div>
         <h4 class="py-2">{{product.name}}</h4>
         <div class="d-flex">

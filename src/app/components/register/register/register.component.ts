@@ -190,7 +190,6 @@ export class RegisterComponent implements OnInit {
 
     if(this.imageSrc != this._defaultSrc) {
       model.userDetails.avatar = this.imageSrc.replace(/^data:image\/(png|jpg|jpeg);base64,/, "")
-      console.log(model.userDetails.avatar)
     } else {
       model.userDetails.avatar = undefined
     }

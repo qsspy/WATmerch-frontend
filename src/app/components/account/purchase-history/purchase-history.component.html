@@ -1,0 +1,48 @@
+<h3 class="mb-3">Historia Zakupów</h3>
+
+<div *ngFor="let purchase of purchases, let i = index">
+    <h4>{{purchase.purchaseDate | date : 'yyyy-MM-dd, HH:mm'}}</h4>
+    <table  class="table table-hover table-bordered mb-5">
+        <thead>
+            <th></th>
+            <th>Nazwa</th>
+            <th class="d-none d-md-table-cell">Cena</th>
+            <th>Ilość</th>
+            <th>Suma cząstkowa</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let orderProduct of purchase.orderProducts, let j = index">
+                <td>
+                    <img [src]="orderProduct?.product?.basicDetails?.logoImage! | byteArrayToImage">
+                </td>
+                <td>
+                    <a [routerLink]="['/product', orderProduct.product?.barcode]">{{orderProduct.product?.name}}</a>
+                </td>
+                <td *ngIf="orderProduct.product?.basicDetails?.discountPercent != undefined" class="d-none d-md-table-cell">{{orderProduct!.product!.price! - (orderProduct!.product!.price! * orderProduct!.product!.basicDetails?.discountPercent!) | number : '1.2-2'}}zł</td>
+                <td *ngIf="orderProduct.product?.basicDetails?.discountPercent == undefined" class="d-none d-md-table-cell">{{orderProduct!.product!.price! | number : '1.2-2'}}zł</td>
+                <td>{{orderProduct.quantity}}</td>
+                <td>{{subtotals[i][j] | number : '1.2-2'}}zł</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="summary-text">Suma</td>
+                <td></td>
+                <td class="d-none d-md-table-cell"></td>
+                <td class="summary-text">{{totals[i] | number : '1.2-2'}}zł</td>
+            </tr>
+            <tr class="status-tr">
+                <td></td>
+                <td class="summary-text">Status</td>
+                <td></td>
+                <td class="d-none d-md-table-cell"></td>
+                <td class="status-text d-flex flex-column">
+                    <span *ngIf="!purchase.isPaid" style="color: red;">Nieopłacone</span>
+                    <span *ngIf="purchase.isPaid" style="color: green">Opłacone</span>
+                    <span *ngIf="purchase.isFinished" style="color: green">Zakończone</span>
+                    <span *ngIf="!purchase.isFinished"style="color: red;">Niezakończone</span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+

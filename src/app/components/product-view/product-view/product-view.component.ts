@@ -16,7 +16,7 @@ export class ProductViewComponent implements OnInit {
 
   @ViewChild('quantityPicker', {static: true}) quantityPicker! : QuantityPickerComponent
 
-  product : ProductModel = new ProductModel()
+  product? : ProductModel
   productImageUrl : any
 
   constructor(
