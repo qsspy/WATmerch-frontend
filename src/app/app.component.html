@@ -11,7 +11,9 @@
     <div class="d-flex">
       <app-left-sidebar></app-left-sidebar>
       <div class="m-4 m-xl-0 flex-fill">
-        <router-outlet></router-outlet>
+        <main class="router-wrapper" [@routeAnimation]="getDepth(outlet)">
+          <router-outlet #outlet="outlet"></router-outlet>
+        </main>
       </div>
       <div class="d-none sidebar d-xl-block"></div>
     </div>

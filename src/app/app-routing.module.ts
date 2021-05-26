@@ -12,16 +12,16 @@ import { RegisterComponent } from './components/register/register/register.compo
 import { ShopComponent } from './components/shop/shop/shop.component';
 
 const routes: Routes = [
-  {path: 'home', component: HomeComponent},
-  {path: 'shop', component: ShopComponent},
-  {path: 'contact', component: ContactComponent},
-  {path: 'product/:id', component: ProductViewComponent},
-  {path: 'cart', component: CartComponent},
-  {path: 'order', component: OrderComponent},
-  {path: 'orderComplete', component: OrderCompleteComponent},
-  {path: 'login', component: LoginComponent},
-  {path: 'account', component: AccountComponent},
-  {path: 'register', component: RegisterComponent},
+  {path: 'home', component: HomeComponent, data: {depth: 1}},
+  {path: 'shop', component: ShopComponent, data: {depth: 2}},
+  {path: 'contact', component: ContactComponent, data: {depth: 3}},
+  {path: 'product/:id', component: ProductViewComponent, data: {depth: 4}},
+  {path: 'cart', component: CartComponent, data: {depth: 5}},
+  {path: 'order', component: OrderComponent, data: {depth: 6}},
+  {path: 'orderComplete', component: OrderCompleteComponent, data: {depth: 7}},
+  {path: 'login', component: LoginComponent, data: {depth: 8}},
+  {path: 'account', component: AccountComponent, data: {depth: 9}},
+  {path: 'register', component: RegisterComponent, data: {depth: 10}},
   {path: '**', redirectTo: 'home'}
 ];
 

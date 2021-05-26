@@ -3,3 +3,15 @@ mat-sidenav {
     width: 300px;
     height: 100vh;
 }
+
+router-outlet {
+    display: none;
+}
+
+.router-wrapper {
+    position: relative;
+}
+
+.router-wrapper>* {
+    display: block;
+}

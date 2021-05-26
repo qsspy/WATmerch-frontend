@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductModel } from 'src/app/models/product/product-model';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -12,7 +11,6 @@ export class HeaderComponent implements OnInit {
   constructor(private productService : ProductService) { }
 
   ngOnInit(): void {
-
   }
 
 }
