@@ -87,7 +87,6 @@ export class NavigationComponent implements OnInit, AfterViewInit {
   }
 
   searchProduct() {
-    console.log('clicked!')
     let input : string = this.searchInput.nativeElement.value
     this.productService.keyword = input
     if(this.router.url.includes('/shop')) {

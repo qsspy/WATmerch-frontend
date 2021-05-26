@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { Router } from '@angular/router';
 import { ProductModel } from 'src/app/models/product/product-model';
-import { CategoryService } from 'src/app/services/category.service';
-import { ProductPage, ProductService } from 'src/app/services/product.service';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-shop-products',
@@ -22,8 +20,7 @@ export class ShopProductsComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
-    private sanitizer: DomSanitizer,
-    private router: Router) {
+    private sanitizer: DomSanitizer) {
     this._categoryId = this.productService.activeCategoryId
     this._keyword = this.productService.keyword
   }

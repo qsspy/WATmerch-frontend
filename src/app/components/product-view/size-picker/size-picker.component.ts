@@ -18,7 +18,6 @@ export class SizePickerComponent implements OnInit {
   }
 
   selectSize(size: string, event: any) {
-    console.log('peep')
 
     if (this.selectedSizeElement) {
       if (this.selectedSizeElement == event.currentTarget) {

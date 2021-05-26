@@ -1,11 +1,8 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Byte } from '@angular/compiler/src/util';
-import { ElementRef } from '@angular/core';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AddressModel } from 'src/app/models/address/address-model';
-import { UserDetailsModel } from 'src/app/models/user/user-details-model';
 import { UserModel } from 'src/app/models/user/user-model';
 import { UserService } from 'src/app/services/user.service';
 import { CustomValidators } from 'src/app/validators/custom-validators';
@@ -122,7 +119,6 @@ export class RegisterComponent implements OnInit {
       const reader = new FileReader();
 
       reader.addEventListener('load',event=>{
-        console.log(event)
         this.imageSrc = event.target!.result
       })
 
@@ -157,10 +153,8 @@ export class RegisterComponent implements OnInit {
         (error : HttpErrorResponse) => {
           const message : string = error.error.details
           if(message.includes('User')) {
-            console.log(error.error)
             this.usernameTaken = true
           } else if(message.includes('E-mail')) {
-            console.log(error.error)
             this.emailTaken = true
           } else {
             Swal.fire({

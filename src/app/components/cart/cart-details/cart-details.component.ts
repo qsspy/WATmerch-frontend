@@ -1,5 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit} from '@angular/core';
 import { OrderProductModel } from 'src/app/models/order/order-product-model';
 import { CartService } from 'src/app/services/cart.service';
 import Swal from 'sweetalert2';

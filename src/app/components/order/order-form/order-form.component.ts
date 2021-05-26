@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
 import { AddressModel } from 'src/app/models/address/address-model';
-import { PurchaseModel } from 'src/app/models/purchase/purchase-model';
 import { UserModel } from 'src/app/models/user/user-model';
-import { PurchaseService } from 'src/app/services/purchase.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({

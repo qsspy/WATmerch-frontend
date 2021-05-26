@@ -21,7 +21,6 @@ export class ColorPickerComponent implements OnInit{
   ngOnInit(): void { }
 
   selectColor(colorName : string, event : any) {
-    console.log('peep')
     
     if(this.selectedColor) {
       if(this.selectedColor == event.target) {
@@ -36,7 +35,6 @@ export class ColorPickerComponent implements OnInit{
       } 
     } else {
       this.selectedColor = event.target
-      console.log(this.selectedColor.parentNode.classList)
       this.selectedColor.parentNode.classList.add('selected-color')
       this.selectedColorLabel.nativeElement.innerHTML = colorName
     }
