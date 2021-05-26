@@ -3,7 +3,9 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Observable } from 'rxjs';
 import { AddressModel } from 'src/app/models/address/address-model';
 import { PurchaseModel } from 'src/app/models/purchase/purchase-model';
+import { UserModel } from 'src/app/models/user/user-model';
 import { PurchaseService } from 'src/app/services/purchase.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-order-form',
@@ -20,10 +22,9 @@ export class OrderFormComponent implements OnInit {
     return isValid ? null : { 'whitespace': true };
   }
 
-
-
   constructor(
-    private formBuilder: FormBuilder) { }
+    private formBuilder: FormBuilder,
+    private userService : UserService) { }
 
   ngOnInit(): void {
 
@@ -46,6 +47,12 @@ export class OrderFormComponent implements OnInit {
         country: new FormControl('', [Validators.required, Validators.pattern(/^\S.*\S$/)]),
         phoneNumber: new FormControl('', [Validators.required, Validators.pattern(/^\d+$/), Validators.pattern(/^\S.*\S$/)])
       })
+    })
+
+    this.userService.currentUser.subscribe((data : UserModel)=>{
+      if(data.username != '') {
+        this.copyUsetDataToForm(data)
+      }
     })
   }
 
@@ -99,6 +106,27 @@ export class OrderFormComponent implements OnInit {
     }
   }
 
+  private copyUsetDataToForm(user : UserModel) {
+    const shipping = user.shippingAddress
+    const billing = user.billingAddress
+
+      this.billingCity?.setValue(billing.city)
+      this.billingCountry?.setValue(billing.country)
+      this.billingStreet?.setValue(billing.street)
+      this.billingFirstName?.setValue(billing.firstName)
+      this.billingLastName?.setValue(billing.lastName)
+      this.billingPhoneNumber?.setValue(billing.phoneNumber)
+      this.billingPostalCode?.setValue(billing.postalCode)
+
+      this.shippingCity?.setValue(shipping.city)
+      this.shippingCountry?.setValue(shipping.country)
+      this.shippingStreet?.setValue(shipping.street)
+      this.shippingFirstName?.setValue(shipping.firstName)
+      this.shippingLastName?.setValue(shipping.lastName)
+      this.shippingPhoneNumber?.setValue(shipping.phoneNumber)
+      this.shippingPostalCode?.setValue(shipping.postalCode)
+  }
+
   get shippingFirstName() {
     return this.orderFormGroup.get('shippingAddress.firstName')
   }
@@ -126,8 +154,6 @@ export class OrderFormComponent implements OnInit {
   get shippingPhoneNumber() {
     return this.orderFormGroup.get('shippingAddress.phoneNumber')
   }
-
-
 
   get billingFirstName() {
     return this.orderFormGroup.get('billingAddress.firstName')

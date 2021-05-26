@@ -4,7 +4,9 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { BehaviorSubject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { AuthInterceptor } from '../http-interceptors/auth-interceptor';
+import { AddressModel } from '../models/address/address-model';
 import { UserCredsModel } from '../models/user-creds/user-creds-model';
+import { UserDetailsModel } from '../models/user/user-details-model';
 import { UserModel } from '../models/user/user-model';
 
 @Injectable({
@@ -12,19 +14,19 @@ import { UserModel } from '../models/user/user-model';
 })
 export class UserService {
 
-  currentUser : BehaviorSubject<UserModel> = new BehaviorSubject<UserModel>(new UserModel())
-  currentUserLogoUrl : BehaviorSubject<any> = new BehaviorSubject('assets/images/user.png')
+  currentUser: BehaviorSubject<UserModel> = new BehaviorSubject<UserModel>(new UserModel())
+  currentUserLogoUrl: BehaviorSubject<any> = new BehaviorSubject('assets/images/user.png')
 
   private basUrl = environment.serverUrl
   private _userStorageKey = "WATmerch_user"
 
-  private headers = new HttpHeaders({'Content-Type':'application/json; charset=utf-8'});
+  private headers = new HttpHeaders({ 'Content-Type': 'application/json; charset=utf-8' });
 
-  constructor(private http : HttpClient,
-    private sanitizer : DomSanitizer) {
+  constructor(private http: HttpClient,
+    private sanitizer: DomSanitizer) {
 
     let storedUser = window.localStorage.getItem(this._userStorageKey)
-    if(storedUser) {
+    if (storedUser) {
       this.publishUser(JSON.parse(storedUser))
     }
   }
@@ -37,31 +39,44 @@ export class UserService {
     credsModel.password = password
     credsModel.username = username
 
-    return this.http.post<UserModel>(url, JSON.stringify(credsModel), {headers: this.headers})
+    return this.http.post<UserModel>(url, JSON.stringify(credsModel), { headers: this.headers })
   }
 
-  register(user : UserModel) {
+  register(user: UserModel) {
     const url = this.basUrl + '/api/register'
 
-    return this.http.post<UserModel>(url,JSON.stringify(user), {headers: this.headers})
+    return this.http.post<UserModel>(url, JSON.stringify(user), { headers: this.headers })
   }
 
-  logout () {
+  logout() {
     this.currentUser.next(new UserModel())
     this.currentUserLogoUrl.next('assets/images/user.png')
     window.localStorage.removeItem(this._userStorageKey)
   }
 
-  publishUser(user : UserModel) {
+  publishUser(user: UserModel) {
     this.currentUser.next(user)
 
-    if(user.userDetails.avatar) {
+    if (user.userDetails.avatar) {
       let objectURL = 'data:image/jpeg;base64,' + user.userDetails.avatar
       this.currentUserLogoUrl.next(this.sanitizer.bypassSecurityTrustUrl(objectURL))
     }
   }
 
+  editUserDetails(details: UserDetailsModel) {
+    const url = this.basUrl + '/api/editUserDetails'
+
+    return this.http.put<UserDetailsModel>(url, JSON.stringify(details), { headers: this.headers })
+  }
+
+  editUserAddress(address : AddressModel, type : 'shipping' | 'billing') {
+
+    const url = this.basUrl + '/api/editUserAddress/' + type
+
+    return this.http.put<AddressModel>(url,JSON.stringify(address),{headers: this.headers})
+  }
+
   saveCurrentUserInLocalStorage() {
-    window.localStorage.setItem(this._userStorageKey,JSON.stringify(this.currentUser.value))
+    window.localStorage.setItem(this._userStorageKey, JSON.stringify(this.currentUser.value))
   }
 }

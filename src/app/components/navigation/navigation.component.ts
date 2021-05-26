@@ -106,9 +106,9 @@ export class NavigationComponent implements OnInit, AfterViewInit {
   }
 
   logout() {
-    this.userService.logout()
-
+    
     this.router.navigate(['/login'])
+    this.userService.logout()
 
     Swal.fire({
       title: 'Pomyślnie wylogowano!',

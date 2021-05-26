@@ -1,3 +1,13 @@
 .form-group {
     margin: 15px 0;
 }
+
+button {
+    font-size: 1.2rem;
+    font-family: monospace, sans-serif;
+    font-weight: bold;
+}
+
+small {
+    color:red;
+}

@@ -8,6 +8,7 @@ import { AddressModel } from 'src/app/models/address/address-model';
 import { UserDetailsModel } from 'src/app/models/user/user-details-model';
 import { UserModel } from 'src/app/models/user/user-model';
 import { UserService } from 'src/app/services/user.service';
+import { CustomValidators } from 'src/app/validators/custom-validators';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -22,8 +23,6 @@ export class RegisterComponent implements OnInit {
   submitDisabled = false
 
   registerForm! : FormGroup
-  private _emailPattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-  private _spaceOrDigitPattern = /^(\d|\s)+$/
 
   passwordsDoesntMatch = false
   usernameTaken = false
@@ -49,11 +48,11 @@ export class RegisterComponent implements OnInit {
       username: ['',[Validators.required, Validators.minLength(4), this.constainsNoWhitespace]],
       password: ['',[Validators.required, Validators.minLength(6), this.constainsNoWhitespace]],
       confirmPass: ['',[Validators.required, Validators.minLength(6), this.constainsNoWhitespace]],
-      email: ['',[Validators.pattern(this._emailPattern), Validators.required]],
+      email: ['',[CustomValidators.email, Validators.required]],
       userDetails: this.formBuilder.group({
         firstName: ['',[Validators.required]],
         lastName: ['',[Validators.required]],
-        phoneNumber: ['',[Validators.pattern(this._spaceOrDigitPattern), Validators.required]],
+        phoneNumber: ['',[CustomValidators.spacesOrDigits, Validators.required]],
         birthDate: ['',[Validators.required]],
         company: [''],
         nip: [''],
@@ -112,7 +111,6 @@ export class RegisterComponent implements OnInit {
       const file = event.target.files[0];
 
       if(file.type != "image/png" && file.type != "image/jpeg") {
-        console.log('rejecting')
         this.invalidFile = true
         event.target.value = null
         this.imageSrc = this._defaultSrc
