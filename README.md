@@ -4,12 +4,12 @@
 
 WATmerch-frontend is the frontend application, which simulate online shop.
 This shop sells products, which are connected with Military Uniwersity of Technology.
-The App is made with Angular and uses REST API provided by WAT-merch backend (https://github.com/qsspy/WATmerch-backend)
+The App is made with Angular and uses REST API provided by WATmerch-backend (https://github.com/qsspy/WATmerch-backend)
 
 ## Technologies and tools
 
 * Angular 11
-* HTML + CC
+* HTML + CSS
 * Typescript
 * Bootstrap 5
 * Font Awesome 4.7
