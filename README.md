@@ -19,6 +19,16 @@ The App is made with Angular and uses REST API provided by WATmerch-backend (htt
 
 Application is under development. App will be deployed on Heroku probably at the end of summer semester
 
+## Features
+
+* Browsing products (by category, by name)
+* Viewing shopping cart
+* Placing orders
+* Registration and login
+* Modifying user Data
+* Viewing user Panel
+* Viewing purchase history
+
 ## Screenshots
 
 ![image](https://user-images.githubusercontent.com/58231905/120043524-674a5f80-c00c-11eb-849d-5d657d6f9628.png)
