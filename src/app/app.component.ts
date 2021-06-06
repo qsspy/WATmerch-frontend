@@ -18,7 +18,7 @@ import {
   animations: [
     trigger('routeAnimation', [
       transition('* <=> *', [
-        style({height: '!',overflow: 'hidden'}),
+        style({height: '100vh',overflow: 'hidden'}),
         query(':enter', style({opacity:0}),{ optional: true }),
         query(':enter, :leave', style({position: 'absolute', top:0, left:0, width:'100%'}),{ optional: true }),
         group([

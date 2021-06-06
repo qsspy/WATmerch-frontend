@@ -25,6 +25,7 @@ export class RegisterComponent implements OnInit {
   usernameTaken = false
   emailTaken = false
   invalidFile = false
+  fileToBig = false
 
   constainsNoWhitespace(control: FormControl) {
     const isWhitespace = control.value.includes(' ')
@@ -112,9 +113,15 @@ export class RegisterComponent implements OnInit {
         event.target.value = null
         this.imageSrc = this._defaultSrc
         return
+      } else if(file.size > 1048576) {
+        this.fileToBig = true
+        event.target.value = null
+        this.imageSrc = this._defaultSrc
+        return
       }
 
       this.invalidFile = false
+      this.fileToBig = false
 
       const reader = new FileReader();
 

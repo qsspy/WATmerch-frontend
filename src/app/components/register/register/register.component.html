@@ -107,6 +107,7 @@
                     <input #imageInput type="file" class="form-control" accept=".png, .jpg, .jpeg" (change)="onChange($event)" formControlName="avatar">
                     <small *ngIf="invalidFile">
                     Możesz wybrać tylko obraz!</small>
+                    <small *ngIf="fileToBig">Plik musi być mniejszy niż 1MB</small>
                 </div>
                 <div class="flex-center img-wrapper mt-4">
                     <img [src]="imageSrc" alt="">
