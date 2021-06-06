@@ -17,7 +17,11 @@ The App is made with Angular and uses REST API provided by WATmerch-backend (htt
 
 ## Deployment and Development
 
-Application is under development. App will be deployed on Heroku probably at the end of summer semester
+Application is published on Heroku : https://watmerch-web.herokuapp.com/home
+
+<b>Important :</b> If you dont see the products in the shop then "wake" the backend by visiting it's URL : https://watmerch-backend.herokuapp.com/
+You'll see login form but you dont need to do anything, just go back to shop page.
+This behavoiur is caused by Free Heroku hosting. Frontend tries to get data from "sleeping" backend. After you hit on backend's URL everything should be fine.
 
 ## Features
 
