@@ -1,27 +1,41 @@
-# WATmerchFrontend
+# WATmerch-frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.2.
+## Description
 
-## Development server
+WATmerch-frontend is the frontend application, which simulate online shop.
+This shop sells products, which are connected with Military Uniwersity of Technology.
+The App is made with Angular and uses REST API provided by WATmerch-backend (https://github.com/qsspy/WATmerch-backend)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Technologies and tools
 
-## Code scaffolding
+* Angular 11
+* HTML + CSS
+* Typescript
+* Bootstrap 5
+* Font Awesome 4.7
+* Angular Material
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Deployment and Development
 
-## Build
+Application is under development. App will be deployed on Heroku probably at the end of summer semester
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Features
 
-## Running unit tests
+* Browsing products (by category, by name)
+* Viewing shopping cart
+* Placing orders
+* Registration and login
+* Modifying user Data
+* Viewing user Panel
+* Viewing purchase history
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Screenshots
 
-## Running end-to-end tests
+![image](https://user-images.githubusercontent.com/58231905/120043524-674a5f80-c00c-11eb-849d-5d657d6f9628.png)
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+![image](https://user-images.githubusercontent.com/58231905/120043652-a678b080-c00c-11eb-846b-000e7cfbf7b9.png)
 
-## Further help
+![image](https://user-images.githubusercontent.com/58231905/120043828-fbb4c200-c00c-11eb-944d-2c38ffeef173.png)
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
