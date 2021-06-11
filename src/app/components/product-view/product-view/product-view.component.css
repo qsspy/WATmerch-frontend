@@ -1,18 +1,24 @@
 img {
-    width: 50%;
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    max-height: 100%;
+    max-width: 100%;
 }
 
 .img-container {
     border: 2px solid #393D46;
+    position: relative;
+    height: 300px;
 }
 
 /* md */
 @media (min-width: 768px) {
-
-    img {
-        height:95%;
-        width: auto;
-    }
 
     .img-container {
         width: 300px;

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  serverUrl: "https://watmerch-backend.herokuapp.com"
+  serverUrl: "http://localhost:8081"
 };
 
 /*
